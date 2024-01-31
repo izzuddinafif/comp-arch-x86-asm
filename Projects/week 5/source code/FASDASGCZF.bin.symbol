@@ -1,0 +1,32 @@
+< THE SYMBOL TABLE >  FASDASGCZF.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XS                       	00004     	-1        	NEAR      	CODE      
+DELAY0                   	00013     	-1        	LABEL     	CODE      
+DELAY1                   	0001E     	-1        	LABEL     	CODE      
+DELAY2                   	00029     	-1        	LABEL     	CODE      
+DELAY3                   	00034     	-1        	LABEL     	CODE      
+DELAY4                   	0003F     	-1        	LABEL     	CODE      
+DELAY5                   	0004A     	-1        	LABEL     	CODE      
+DELAY6                   	00055     	-1        	LABEL     	CODE      
+DELAY7                   	00060     	-1        	LABEL     	CODE      
+DELAY8                   	0006B     	-1        	LABEL     	CODE      
+DELAY9                   	00076     	-1        	LABEL     	CODE      
+P0                       	00079     	-1        	NEAR      	CODE      
+P1                       	00083     	-1        	NEAR      	CODE      
+P2                       	0008A     	-1        	NEAR      	CODE      
+P3                       	00091     	-1        	NEAR      	CODE      
+P4                       	00098     	-1        	NEAR      	CODE      
+P5                       	0009F     	-1        	NEAR      	CODE      
+P6                       	000A6     	-1        	NEAR      	CODE      
+P7                       	000AD     	-1        	NEAR      	CODE      
+P8                       	000B4     	-1        	NEAR      	CODE      
+P9                       	000BB     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:06:00 PM ] 
+< END >
+ 

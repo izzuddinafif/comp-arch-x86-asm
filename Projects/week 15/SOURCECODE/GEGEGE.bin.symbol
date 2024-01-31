@@ -1,0 +1,84 @@
+< THE SYMBOL TABLE >  GEGEGE.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XX                       	00008     	-1        	LABEL     	CODE      
+DELAY0                   	00017     	-1        	LABEL     	CODE      
+DELAY1                   	00022     	-1        	LABEL     	CODE      
+DELAY2                   	00033     	-1        	LABEL     	CODE      
+DELAY3                   	0003E     	-1        	LABEL     	CODE      
+XLCDA                    	00040     	-1        	LABEL     	CODE      
+DELAY4                   	0004F     	-1        	LABEL     	CODE      
+DELAY5                   	0005A     	-1        	LABEL     	CODE      
+DELAY6                   	0006B     	-1        	LABEL     	CODE      
+DELAY7                   	00076     	-1        	LABEL     	CODE      
+DELAY8                   	00087     	-1        	LABEL     	CODE      
+DELAY9                   	00092     	-1        	LABEL     	CODE      
+DELAY10                  	000A3     	-1        	LABEL     	CODE      
+DELAY11                  	000AE     	-1        	LABEL     	CODE      
+DELAY12                  	000BF     	-1        	LABEL     	CODE      
+DELAY13                  	000CA     	-1        	LABEL     	CODE      
+XLCDB                    	000D4     	-1        	LABEL     	CODE      
+D1                       	000E2     	-1        	LABEL     	CODE      
+D2                       	000EC     	-1        	LABEL     	CODE      
+DELAY14                  	00104     	-1        	LABEL     	CODE      
+DELAY15                  	0010F     	-1        	LABEL     	CODE      
+XA                       	00119     	-1        	LABEL     	CODE      
+DELAY16                  	00122     	-1        	LABEL     	CODE      
+DELAY17                  	0012D     	-1        	LABEL     	CODE      
+XB                       	0013E     	-1        	LABEL     	CODE      
+DELAY18                  	00182     	-1        	LABEL     	CODE      
+DELAY19                  	0018D     	-1        	LABEL     	CODE      
+XB9                      	00195     	-1        	LABEL     	CODE      
+DELAY20                  	0019E     	-1        	LABEL     	CODE      
+DELAY21                  	001A9     	-1        	LABEL     	CODE      
+XB8                      	001B7     	-1        	LABEL     	CODE      
+DELAY22                  	001C0     	-1        	LABEL     	CODE      
+DELAY23                  	001CB     	-1        	LABEL     	CODE      
+XB7                      	001D9     	-1        	LABEL     	CODE      
+DELAY24                  	001E2     	-1        	LABEL     	CODE      
+DELAY25                  	001ED     	-1        	LABEL     	CODE      
+XB6                      	001FB     	-1        	LABEL     	CODE      
+DELAY26                  	00204     	-1        	LABEL     	CODE      
+DELAY27                  	0020F     	-1        	LABEL     	CODE      
+XB5                      	0021D     	-1        	LABEL     	CODE      
+DELAY28                  	00226     	-1        	LABEL     	CODE      
+DELAY29                  	00231     	-1        	LABEL     	CODE      
+XB4                      	0023F     	-1        	LABEL     	CODE      
+DELAY30                  	00248     	-1        	LABEL     	CODE      
+DELAY31                  	00253     	-1        	LABEL     	CODE      
+XB3                      	00260     	-1        	LABEL     	CODE      
+DELAY32                  	00269     	-1        	LABEL     	CODE      
+DELAY33                  	00274     	-1        	LABEL     	CODE      
+XB2                      	00281     	-1        	LABEL     	CODE      
+DELAY34                  	0028A     	-1        	LABEL     	CODE      
+DELAY35                  	00295     	-1        	LABEL     	CODE      
+XB1                      	002A2     	-1        	LABEL     	CODE      
+DELAY36                  	002AB     	-1        	LABEL     	CODE      
+DELAY37                  	002B6     	-1        	LABEL     	CODE      
+XC                       	002C3     	-1        	LABEL     	CODE      
+DELAY38                  	002E8     	-1        	LABEL     	CODE      
+DELAY39                  	002F3     	-1        	LABEL     	CODE      
+XC9                      	002FE     	-1        	LABEL     	CODE      
+DELAY40                  	00307     	-1        	LABEL     	CODE      
+DELAY41                  	00312     	-1        	LABEL     	CODE      
+XC8                      	0031C     	-1        	LABEL     	CODE      
+DELAY42                  	00325     	-1        	LABEL     	CODE      
+DELAY43                  	00330     	-1        	LABEL     	CODE      
+XC6                      	0033A     	-1        	LABEL     	CODE      
+DELAY44                  	00343     	-1        	LABEL     	CODE      
+DELAY45                  	0034E     	-1        	LABEL     	CODE      
+XC4                      	00358     	-1        	LABEL     	CODE      
+DELAY46                  	00361     	-1        	LABEL     	CODE      
+DELAY47                  	0036C     	-1        	LABEL     	CODE      
+XC2                      	00376     	-1        	LABEL     	CODE      
+DELAY48                  	0037F     	-1        	LABEL     	CODE      
+DELAY49                  	0038A     	-1        	LABEL     	CODE      
+XZ                       	00394     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 06-Dec-21  --  07:39:59 AM ] 
+< END >
+ 

@@ -1,0 +1,33 @@
+< THE SYMBOL TABLE >  asfdfas.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XX                       	00008     	-1        	LABEL     	CODE      
+DELAY0                   	00011     	-1        	LABEL     	CODE      
+DELAY01                  	00011     	-1        	LABEL     	CODE      
+DELAY1                   	0001E     	-1        	LABEL     	CODE      
+DELAY2                   	00029     	-1        	LABEL     	CODE      
+DELAY3                   	00034     	-1        	LABEL     	CODE      
+DELAY4                   	0003F     	-1        	LABEL     	CODE      
+DELAY5                   	0004A     	-1        	LABEL     	CODE      
+DELAY6                   	00055     	-1        	LABEL     	CODE      
+DELAY7                   	00060     	-1        	LABEL     	CODE      
+DELAY8                   	0006B     	-1        	LABEL     	CODE      
+DELAY9                   	00076     	-1        	LABEL     	CODE      
+DELAY10                  	00081     	-1        	LABEL     	CODE      
+DELAY11                  	0008C     	-1        	LABEL     	CODE      
+DELAY12                  	00097     	-1        	LABEL     	CODE      
+DELAY13                  	000A2     	-1        	LABEL     	CODE      
+DELAY14                  	000AD     	-1        	LABEL     	CODE      
+DELAY15                  	000B8     	-1        	LABEL     	CODE      
+DELAY16                  	000C3     	-1        	LABEL     	CODE      
+DELAY17                  	000CE     	-1        	LABEL     	CODE      
+DELAY18                  	000D9     	-1        	LABEL     	CODE      
+DELAY19                  	000E4     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 22-Sep-21  --  10:06:52 PM ] 
+< END >
+ 

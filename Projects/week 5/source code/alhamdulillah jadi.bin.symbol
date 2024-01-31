@@ -1,0 +1,33 @@
+< THE SYMBOL TABLE >  alhamdulillah jadi.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XA                       	00008     	-1        	LABEL     	CODE      
+XS                       	00028     	-1        	NEAR      	CODE      
+DELAY0                   	00031     	-1        	LABEL     	CODE      
+DELAY1                   	0003C     	-1        	LABEL     	CODE      
+DELAY2                   	00047     	-1        	LABEL     	CODE      
+DELAY3                   	00052     	-1        	LABEL     	CODE      
+DELAY4                   	0005D     	-1        	LABEL     	CODE      
+DELAY5                   	00068     	-1        	LABEL     	CODE      
+DELAY6                   	00073     	-1        	LABEL     	CODE      
+DELAY7                   	0007E     	-1        	LABEL     	CODE      
+DELAY8                   	00089     	-1        	LABEL     	CODE      
+DELAY9                   	00094     	-1        	LABEL     	CODE      
+P0                       	00097     	-1        	NEAR      	CODE      
+P1                       	000A1     	-1        	NEAR      	CODE      
+P2                       	000AB     	-1        	NEAR      	CODE      
+P3                       	000B5     	-1        	NEAR      	CODE      
+P4                       	000BF     	-1        	NEAR      	CODE      
+P5                       	000C9     	-1        	NEAR      	CODE      
+P6                       	000D3     	-1        	NEAR      	CODE      
+P7                       	000DD     	-1        	NEAR      	CODE      
+P8                       	000E7     	-1        	NEAR      	CODE      
+P9                       	000F1     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:37:14 PM ] 
+< END >
+ 

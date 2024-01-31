@@ -1,0 +1,160 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+tes4.bin -- emu8086 assembler version: 4.08  
+ 
+[ 22-Sep-21  --  10:01:53 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORT_CON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0005: BA 06 00                              MOV AX,DATA
+[  44]    0008: B0 81                                 MOV DS,AX
+[  45]        :                                       
+[  46]        :                                       org 0000h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       ;add your code here
+[  50]    0005:                                       START:
+[  51]        :                                       
+[  52]    0005: BA 06 00                              MOV DX, PORT_CON
+[  53]    0008: B0 81                                 MOV AL, 10000001B; PORT A as Output
+[  54]    000A: EE                                    OUT DX, AL
+[  55]        :                                       
+[  56]    000B: EB F8                                 JMP 0X
+[  57]        :                                       
+[  58]        :                                       0X:
+[  59]        :                                       
+[  60]    000D: B0 3F                                 MOV AL, 00111111B ; displaying 0 left
+[  61]    000F: BA 00 00                              MOV DX, PORTA
+[  62]    0012: EE                                    OUT DX,AL
+[  63]    0013: B9 36 DF                              MOV CX,0DF36H; Delay
+[  64]    0016:                                       Delay0:
+[  65]    0016:                                       Delay01:
+[  66]    0016: E2 FE                                 loop Delay01
+[  67]    0018: E2 FC                                 loop Delay0
+[  68]        :                                       
+[  69]        :                                       
+[  70]    001A: B0 BF                                 MOV AL, 10111111B ; displaying 0 right
+[  71]    001C: BA 00 00                              MOV DX, PORTA
+[  72]    001F: EE                                    OUT DX,AL
+[  73]    0020: B9 36 DF                              MOV CX,0DF36H; Delay
+[  74]    0023: E2 F1                                 Delay10:loop Delay0
+[  75]        :                                       
+[  76]    0025: B0 86                                 MOV AL, 10000110B ; displaying 1
+[  77]    0027: BA 00 00                              MOV DX, PORTA
+[  78]    002A: EE                                    OUT DX,AL
+[  79]    002B: B9 36 DF                              MOV CX,0DF36H; Delay
+[  80]    002E: E2 FE                                 Delay11:loop Delay11
+[  81]        :                                       
+[  82]    0030: B0 DB                                 MOV AL, 11011011B ; displaying 2
+[  83]    0032: BA 00 00                              MOV DX, PORTA
+[  84]    0035: EE                                    OUT DX,AL
+[  85]    0036: B9 36 DF                              MOV CX,0DF36H; Delay
+[  86]    0039: E2 FE                                 Delay12:loop Delay12
+[  87]        :                                       
+[  88]    003B: B0 CF                                 MOV AL, 11001111B ; displaying 3
+[  89]    003D: BA 00 00                              MOV DX, PORTA
+[  90]    0040: EE                                    OUT DX,AL
+[  91]    0041: B9 36 DF                              MOV CX,0DF36H; Delay
+[  92]    0044: E2 FE                                 Delay13:loop Delay13
+[  93]        :                                       
+[  94]    0046: B0 E6                                 MOV AL, 11100110B ; displaying 4
+[  95]    0048: BA 00 00                              MOV DX, PORTA
+[  96]    004B: EE                                    OUT DX,AL
+[  97]    004C: B9 36 DF                              MOV CX,0DF36H; Delay
+[  98]    004F: E2 FE                                 Delay14:loop Delay14
+[  99]        :                                       
+[ 100]    0051: B0 ED                                 MOV AL, 11101101B ; displaying 5
+[ 101]    0053: BA 00 00                              MOV DX, PORTA
+[ 102]    0056: EE                                    OUT DX,AL
+[ 103]    0057: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 104]    005A: E2 FE                                 Delay15:loop Delay15
+[ 105]        :                                       
+[ 106]    005C: B0 FD                                 MOV AL, 11111101B ; displaying 6
+[ 107]    005E: BA 00 00                              MOV DX, PORTA
+[ 108]    0061: EE                                    OUT DX,AL
+[ 109]    0062: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 110]    0065: E2 FE                                 Delay16:loop Delay16
+[ 111]        :                                       
+[ 112]    0067: B0 87                                 MOV AL, 10000111B ; displaying 7
+[ 113]    0069: BA 00 00                              MOV DX, PORTA
+[ 114]    006C: EE                                    OUT DX,AL
+[ 115]    006D: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 116]    0070: E2 FE                                 Delay17:loop Delay17
+[ 117]        :                                       
+[ 118]    0072: B0 FF                                 MOV AL, 11111111B ; displaying 8
+[ 119]    0074: BA 00 00                              MOV DX, PORTA
+[ 120]    0077: EE                                    OUT DX,AL
+[ 121]    0078: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 122]    007B: E2 FE                                 Delay18:loop Delay18
+[ 123]        :                                       
+[ 124]    007D: B0 EF                                 MOV AL, 11101111B ; displaying 9
+[ 125]    007F: BA 04 00                              MOV DX, PORTC
+[ 126]    0082: EE                                    OUT DX,AL
+[ 127]    0083: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 128]    0086: E2 FE                                 Delay19:loop Delay19
+[ 129]        :                                       
+[ 130]    0088: E9 7A FF                              JMP 0X
+[ 131]        :                                       
+[ 132]    008B: E9 77 FF                              JMP START
+[ 133]        :                                       
+[ 134]        :                                       CODE ENDS
+[ 135]        :                                       END
+[ 136]        :                                       
+[ 137]        :                                       
+[ 138]        :                                       HLT           ; halt!
+[ 139]        :                                       
+[ 140]        :                                       
+[ 141]        :                                       
+[ 142]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,30 @@
+< THE SYMBOL TABLE >  keypad PORTC.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XX                       	0000B     	-1        	LABEL     	CODE      
+DELAY                    	000C2     	-1        	LABEL     	CODE      
+DELAY9                   	000C5     	-1        	LABEL     	CODE      
+F0                       	000C8     	-1        	LABEL     	CODE      
+F1                       	000D4     	-1        	LABEL     	CODE      
+F2                       	000E0     	-1        	LABEL     	CODE      
+F3                       	000EC     	-1        	LABEL     	CODE      
+F4                       	000F8     	-1        	LABEL     	CODE      
+F5                       	00104     	-1        	LABEL     	CODE      
+F6                       	00110     	-1        	LABEL     	CODE      
+F7                       	0011C     	-1        	LABEL     	CODE      
+F8                       	00128     	-1        	LABEL     	CODE      
+F9                       	00134     	-1        	LABEL     	CODE      
+FA                       	00140     	-1        	LABEL     	CODE      
+FB                       	0014C     	-1        	LABEL     	CODE      
+FC                       	00158     	-1        	LABEL     	CODE      
+FD                       	00164     	-1        	LABEL     	CODE      
+FE                       	00170     	-1        	LABEL     	CODE      
+FF                       	0017C     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 10-Oct-21  --  10:52:01 PM ] 
+< END >
+ 

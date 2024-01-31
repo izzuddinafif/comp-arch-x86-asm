@@ -1,0 +1,79 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+GG.bin -- emu8086 assembler version: 4.08  
+ 
+[ 15-Nov-21  --  08:09:23 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ;Memory Interfacing
+[   2]        :                                       ;Transferrring data from ROM to RAM
+[   3]        :                                       
+[   4]        :                                       DATA SEGMENT
+[   5]        :                                       PORTA EQU 00H
+[   6]        :                                       PORTB EQU 02H
+[   7]        :                                       PORTC EQU 04H
+[   8]        :                                       PORT_CON EQU 06H
+[   9]        :                                       DATA ENDS
+[  10]        :                                       CODE SEGMENT
+[  11]    0005: BA 06 00                              MOV AX,DATA
+[  12]    0008: B0 80                                 MOV DS, AX
+[  13]        :                                       
+[  14]        :                                       ORG 0000H
+[  15]    0005:                                       START:
+[  16]        :                                       
+[  17]    0005: BA 06 00                              MOV DX, PORT_CON
+[  18]    0008: B0 80                                 MOV AL, 10000000B
+[  19]    000A: EE                                    OUT DX, AL
+[  20]        :                                       
+[  21]        :                                       
+[  22]    000B: B8 00 00                              MOV AX,00H
+[  23]    000E: B9 08 00                              MOV CX,08H
+[  24]    0011: 50                                    PUSH AX
+[  25]        :                                       
+[  26]    0012:                                       XX:
+[  27]        :                                       
+[  28]        :                                       
+[  29]    0012: 51                                    PUSH CX
+[  30]    0013: 59                                    POP CX
+[  31]    0014: 58                                    POP AX
+[  32]    0015: 51                                    PUSH CX
+[  33]    0016: BA 00 00                              MOV DX, PORTA
+[  34]    0019: EF                                    OUT DX,AX
+[  35]    001A: 40                                    INC AX
+[  36]    001B: 50                                    PUSH AX
+[  37]        :                                       
+[  38]    001C: BA 02 00                              MOV DX, PORTB
+[  39]    001F: B0 00                                 MOV AL, 00000000B
+[  40]    0021: EE                                    OUT DX, AL
+[  41]        :                                       
+[  42]    0022: B9 36 DF                              MOV cx, 0df36H
+[  43]    0025: E2 FE                                 D1: LOOP D1
+[  44]        :                                       
+[  45]        :                                       
+[  46]    0027: BA 02 00                              MOV DX, PORTB
+[  47]    002A: B0 01                                 MOV AL, 00000001B
+[  48]    002C: EE                                    OUT DX, AL
+[  49]    002D: B9 36 DF                              MOV cx, 0df36H
+[  50]    0030: E2 FE                                 D2: LOOP D2
+[  51]        :                                       
+[  52]    0032: 58                                    POP AX
+[  53]    0033: 59                                    POP CX
+[  54]    0034: 50                                    PUSH AX
+[  55]    0035: E2 DB                                 LOOP XX
+[  56]        :                                       
+[  57]    0037: EB CC                                 JMP START
+[  58]        :                                       
+[  59]        :                                       CODE ENDS
+[  60]        :                                       END
+[  61]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,249 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+ALHAMDULILLAAH.bin -- emu8086 assembler version: 4.08  
+ 
+[ 22-Sep-21  --  11:26:51 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#    ; same as loading segment
+[  15]        :                                       #IP=0000h#    ; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#    ; same as loading segment
+[  19]        :                                       #ES=0500h#    ; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#    ; same as loading segment
+[  23]        :                                       #SP=FFFEh#    ; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORT_CON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0005: BA 06 00                              MOV AX,DATA
+[  44]    0008: B0 80                                 MOV DS,AX
+[  45]        :                                       
+[  46]        :                                       org 0000h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       ;add your code here
+[  50]    0005:                                       START:
+[  51]    0005: BA 06 00                              MOV DX, PORT_CON
+[  52]    0008: B0 80                                 MOV AL, 10000000B; PORT A as Output
+[  53]    000A: EE                                    OUT DX, AL
+[  54]        :                                       
+[  55]    000B:                                       XX:
+[  56]        :                                       
+[  57]    000B: E8 8B 00                              CALL P0
+[  58]    000E: E8 92 00                              CALL P1
+[  59]    0011: E8 99 00                              CALL P2
+[  60]    0014: E8 A0 00                              CALL P3
+[  61]    0017: E8 A7 00                              CALL P4
+[  62]    001A: E8 AE 00                              CALL P5
+[  63]    001D: E8 B5 00                              CALL P6
+[  64]    0020: E8 BC 00                              CALL P7
+[  65]    0023: E8 C3 00                              CALL P8
+[  66]    0026: E8 CA 00                              CALL P9
+[  67]    0029: C3                                    RET
+[  68]        :                                       
+[  69]    002A:                                       XS PROC
+[  70]        :                                       
+[  71]    002A: B0 3F                                 MOV AL, 00111111B ; displaying 0
+[  72]    002C: BA 00 00                              MOV DX, PORTA
+[  73]    002F: EE                                    OUT DX,AL
+[  74]    0030: B9 36 DF                              MOV CX,0DF36H; Delay
+[  75]    0033: E2 FE                                 Delay0:loop Delay0
+[  76]        :                                       
+[  77]    0035: B0 06                                 MOV AL, 00000110B ; displaying 1
+[  78]    0037: BA 00 00                              MOV DX, PORTA
+[  79]    003A: EE                                    OUT DX,AL
+[  80]    003B: B9 36 DF                              MOV CX,0DF36H; Delay
+[  81]    003E: E2 FE                                 Delay1:loop Delay1
+[  82]        :                                       
+[  83]    0040: B0 5B                                 MOV AL, 01011011B ; displaying 2
+[  84]    0042: BA 00 00                              MOV DX, PORTA
+[  85]    0045: EE                                    OUT DX,AL
+[  86]    0046: B9 36 DF                              MOV CX,0DF36H; Delay
+[  87]    0049: E2 FE                                 Delay2:loop Delay2
+[  88]        :                                       
+[  89]    004B: B0 4F                                 MOV AL, 01001111B ; displaying 3
+[  90]    004D: BA 00 00                              MOV DX, PORTA
+[  91]    0050: EE                                    OUT DX,AL
+[  92]    0051: B9 36 DF                              MOV CX,0DF36H; Delay
+[  93]    0054: E2 FE                                 Delay3:loop Delay3
+[  94]        :                                       
+[  95]    0056: B0 66                                 MOV AL, 01100110B ; displaying 4
+[  96]    0058: BA 00 00                              MOV DX, PORTA
+[  97]    005B: EE                                    OUT DX,AL
+[  98]    005C: B9 36 DF                              MOV CX,0DF36H; Delay
+[  99]    005F: E2 FE                                 Delay4:loop Delay4
+[ 100]        :                                       
+[ 101]    0061: B0 6D                                 MOV AL, 01101101B ; displaying 5
+[ 102]    0063: BA 00 00                              MOV DX, PORTA
+[ 103]    0066: EE                                    OUT DX,AL
+[ 104]    0067: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 105]    006A: E2 FE                                 Delay5:loop Delay5
+[ 106]        :                                       
+[ 107]    006C: B0 7D                                 MOV AL, 01111101B ; displaying 6
+[ 108]    006E: BA 00 00                              MOV DX, PORTA
+[ 109]    0071: EE                                    OUT DX,AL
+[ 110]    0072: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 111]    0075: E2 FE                                 Delay6:loop Delay6
+[ 112]        :                                       
+[ 113]    0077: B0 07                                 MOV AL, 00000111B ; displaying 7
+[ 114]    0079: BA 00 00                              MOV DX, PORTA
+[ 115]    007C: EE                                    OUT DX,AL
+[ 116]    007D: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 117]    0080: E2 FE                                 Delay7:loop Delay7
+[ 118]        :                                       
+[ 119]    0082: B0 7F                                 MOV AL, 01111111B ; displaying 8
+[ 120]    0084: BA 00 00                              MOV DX, PORTA
+[ 121]    0087: EE                                    OUT DX,AL
+[ 122]    0088: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 123]    008B: E2 FE                                 Delay8:loop Delay8
+[ 124]        :                                       
+[ 125]    008D: B0 6F                                 MOV AL, 01101111B ; displaying 9
+[ 126]    008F: BA 00 00                              MOV DX, PORTA
+[ 127]    0092: EE                                    OUT DX,AL
+[ 128]    0093: B9 36 DF                              MOV CX,0DF36H; Delay
+[ 129]    0096: E2 FE                                 Delay9:loop Delay9
+[ 130]        :                                       
+[ 131]    0098: C3                                    RET
+[ 132]        :                                       XS ENDP
+[ 133]        :                                       
+[ 134]    0099:                                       P0 PROC
+[ 135]    0099: B0 3F                                 MOV AL, 00111111B ; displaying 0
+[ 136]    009B: BA 02 00                              MOV DX, PORTB
+[ 137]    009E: EE                                    OUT DX,AL
+[ 138]    009F: E8 88 FF                              CALL XS
+[ 139]    00A2: C3                                    RET
+[ 140]        :                                       P0 ENDP
+[ 141]        :                                       
+[ 142]    00A3:                                       P1 PROC
+[ 143]    00A3: B0 06                                 MOV AL, 00000110B ; displaying 1
+[ 144]    00A5: BA 02 00                              MOV DX, PORTB
+[ 145]    00A8: EE                                    OUT DX,AL
+[ 146]    00A9: E8 7E FF                              CALL XS
+[ 147]    00AC: C3                                    RET
+[ 148]        :                                       P1 ENDP
+[ 149]        :                                       
+[ 150]    00AD:                                       P2 PROC
+[ 151]    00AD: B0 5B                                 MOV AL, 01011011B ; displaying 2
+[ 152]    00AF: BA 02 00                              MOV DX, PORTB
+[ 153]    00B2: EE                                    OUT DX,AL
+[ 154]    00B3: E8 74 FF                              CALL XS
+[ 155]    00B6: C3                                    RET
+[ 156]        :                                       P2 ENDP
+[ 157]        :                                       
+[ 158]    00B7:                                       P3 PROC
+[ 159]    00B7: B0 4F                                 MOV AL, 01001111B ; displaying 3
+[ 160]    00B9: BA 02 00                              MOV DX, PORTB
+[ 161]    00BC: EE                                    OUT DX,AL
+[ 162]    00BD: E8 6A FF                              CALL XS
+[ 163]    00C0: C3                                    RET
+[ 164]        :                                       P3 ENDP
+[ 165]        :                                       
+[ 166]    00C1:                                       P4 PROC
+[ 167]    00C1: B0 66                                 MOV AL, 01100110B ; displaying 4
+[ 168]    00C3: BA 02 00                              MOV DX, PORTB
+[ 169]    00C6: EE                                    OUT DX,AL
+[ 170]    00C7: E8 60 FF                              CALL XS
+[ 171]    00CA: C3                                    RET
+[ 172]        :                                       P4 ENDP
+[ 173]        :                                       
+[ 174]    00CB:                                       P5 PROC
+[ 175]    00CB: B0 6D                                 MOV AL, 01101101B ; displaying 5
+[ 176]    00CD: BA 02 00                              MOV DX, PORTB
+[ 177]    00D0: EE                                    OUT DX,AL
+[ 178]    00D1: E8 56 FF                              CALL XS
+[ 179]    00D4: C3                                    RET
+[ 180]        :                                       P5 ENDP
+[ 181]        :                                       
+[ 182]    00D5:                                       P6 PROC
+[ 183]    00D5: B0 7D                                 MOV AL, 01111101B ; displaying 6
+[ 184]    00D7: BA 02 00                              MOV DX, PORTB
+[ 185]    00DA: EE                                    OUT DX,AL
+[ 186]    00DB: E8 4C FF                              CALL XS
+[ 187]    00DE: C3                                    RET
+[ 188]        :                                       P6 ENDP
+[ 189]        :                                       
+[ 190]    00DF:                                       P7 PROC
+[ 191]    00DF: B0 07                                 MOV AL, 00000111B ; displaying 7
+[ 192]    00E1: BA 02 00                              MOV DX, PORTB
+[ 193]    00E4: EE                                    OUT DX,AL
+[ 194]    00E5: E8 42 FF                              CALL XS
+[ 195]    00E8: C3                                    RET
+[ 196]        :                                       P7 ENDP
+[ 197]        :                                       
+[ 198]    00E9:                                       P8 PROC
+[ 199]    00E9: B0 7F                                 MOV AL, 01111111B ; displaying 8
+[ 200]    00EB: BA 02 00                              MOV DX, PORTB
+[ 201]    00EE: EE                                    OUT DX,AL
+[ 202]    00EF: E8 38 FF                              CALL XS
+[ 203]    00F2: C3                                    RET
+[ 204]        :                                       P8 ENDP
+[ 205]        :                                       
+[ 206]    00F3:                                       P9 PROC
+[ 207]    00F3: B0 6F                                 MOV AL, 01101111B ; displaying 9
+[ 208]    00F5: BA 02 00                              MOV DX, PORTB
+[ 209]    00F8: EE                                    OUT DX,AL
+[ 210]    00F9: E8 2E FF                              CALL XS
+[ 211]    00FC: C3                                    RET
+[ 212]        :                                       P9 ENDP
+[ 213]        :                                       
+[ 214]    00FD: E9 0B FF                              JMP XX
+[ 215]        :                                       
+[ 216]    0100: E9 02 FF                              JMP START
+[ 217]        :                                       
+[ 218]        :                                       CODE ENDS
+[ 219]        :                                       END
+[ 220]        :                                       
+[ 221]        :                                       
+[ 222]        :                                       HLT           ; halt!
+[ 223]        :                                       
+[ 224]        :                                       
+[ 225]        :                                       
+[ 226]        :                                       
+[ 227]        :                                       
+[ 228]        :                                       
+[ 229]        :                                       ; [SOURCE]: C:\Users\izzud\Downloads\2421600004.asm
+[ 230]        :                                       
+[ 231]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

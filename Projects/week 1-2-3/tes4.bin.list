@@ -1,0 +1,93 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+tes4.bin -- emu8086 assembler version: 4.08  
+ 
+[ 13-Sep-21  --  09:59:32 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORT_CON EQU 06H
+[  38]        :                                       DATA ENDS
+[  39]        :                                       
+[  40]        :                                       CODE SEGMENT
+[  41]    0005: BA 06 00                              MOV AX,DATA
+[  42]    0008: B0 80                                 MOV DS,AX
+[  43]        :                                       
+[  44]        :                                       org 0000h
+[  45]        :                                       
+[  46]        :                                       
+[  47]        :                                       ;add your code here
+[  48]    0005:                                       START:
+[  49]        :                                       
+[  50]    0005: BA 06 00                              MOV DX, PORT_CON
+[  51]    0008: B0 80                                 MOV AL, 10000000B; PORT A, PORT B, PORT C as output
+[  52]    000A: EE                                    OUT DX, AL
+[  53]        :                                       
+[  54]    000B: EB 00                                 JMP XX
+[  55]    000D:                                       XX:
+[  56]    000D: B0 00                                 MOV AL, 0000H
+[  57]    000F: BA 00 00                              MOV DX, PORTA
+[  58]    0012: EE                                    OUT DX, AL
+[  59]    0013: B9 9B 6F                              MOV CX, 6F9BH; Delay
+[  60]    0016: E2 FE                                 loopy1:loop loopy1
+[  61]    0018: B0 81                                 MOV AL, 0081H
+[  62]    001A: BA 00 00                              MOV DX, PORTA
+[  63]    001D: EE                                    OUT DX,AL
+[  64]    001E: B9 9B 6F                              MOV CX, 6F9BH; Delay
+[  65]    0021: E2 FE                                 loopy2:loop loopy2
+[  66]    0023: EB E8                                 JMP XX
+[  67]        :                                       
+[  68]        :                                       CODE ENDS
+[  69]        :                                       END
+[  70]        :                                       
+[  71]        :                                       HLT           ; halt!
+[  72]        :                                       
+[  73]        :                                       
+[  74]        :                                       
+[  75]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,523 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+YESSSSS.bin -- emu8086 assembler version: 4.08  
+ 
+[ 06-Dec-21  --  07:27:12 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       DATA SEGMENT
+[   2]        :                                       PORTA EQU 00H
+[   3]        :                                       PORTB EQU 02H
+[   4]        :                                       PORTC EQU 04H
+[   5]        :                                       PORT_CON EQU 06H
+[   6]        :                                       DATA ENDS
+[   7]        :                                       CODE SEGMENT
+[   8]    0005: BA 06 00                              MOV AX,DATA
+[   9]    0008: B0 90                                 MOV DS, AX
+[  10]        :                                       
+[  11]        :                                       ORG 0000H
+[  12]    0005:                                       START:
+[  13]        :                                       
+[  14]    0005: BA 06 00                              MOV DX, PORT_CON
+[  15]    0008: B0 90                                 MOV AL, 10010000B
+[  16]    000A: EE                                    OUT DX, AL
+[  17]        :                                       
+[  18]    000B: B0 00                                 MOV AL,00H
+[  19]        :                                       
+[  20]        :                                       
+[  21]    000D:                                       XX:
+[  22]        :                                       
+[  23]    000D: B0 00                                 MOV AL,00H  ;command setting cursor
+[  24]    000F: BA 02 00                              MOV DX,PORTB
+[  25]    0012: EE                                    OUT DX,AL
+[  26]    0013: B0 0E                                 MOV AL, 0EH
+[  27]    0015: BA 04 00                              MOV DX, PORTC
+[  28]    0018: EE                                    OUT DX,AL
+[  29]    0019: B9 FF 00                              MOV CX,00FFH; Delay
+[  30]    001C: E2 FE                                 Delay0:loop Delay0
+[  31]    001E: B0 04                                 MOV AL,0100B
+[  32]    0020: BA 02 00                              MOV DX,PORTB
+[  33]    0023: EE                                    OUT DX,AL
+[  34]    0024: B9 FF 00                              MOV CX,00FFH; Delay
+[  35]    0027: E2 FE                                 Delay1:loop Delay1
+[  36]        :                                       
+[  37]    0029: B0 00                                 MOV AL,00H  ;command setting 8 bit mode
+[  38]    002B: BA 02 00                              MOV DX,PORTB
+[  39]    002E: EE                                    OUT DX,AL
+[  40]    002F: B0 38                                 MOV AL, 038H
+[  41]    0031: BA 04 00                              MOV DX, PORTC
+[  42]    0034: EE                                    OUT DX,AL
+[  43]    0035: B9 FF 00                              MOV CX,00FFH; Delay
+[  44]    0038: E2 FE                                 Delay2:loop Delay2
+[  45]    003A: B0 04                                 MOV AL,0100B
+[  46]    003C: BA 02 00                              MOV DX,PORTB
+[  47]    003F: EE                                    OUT DX,AL
+[  48]    0040: B9 FF 00                              MOV CX,00FFH; Delay
+[  49]    0043: E2 FE                                 Delay3:loop Delay3
+[  50]        :                                       
+[  51]    0045:                                       XLCDA:
+[  52]        :                                       
+[  53]    0045: B0 00                                 MOV AL,00H
+[  54]    0047: BA 02 00                              MOV DX,PORTB
+[  55]    004A: EE                                    OUT DX,AL
+[  56]        :                                       
+[  57]    004B: B0 02                                 MOV AL,010B  ;set rs to 1 to input data
+[  58]    004D: BA 02 00                              MOV DX,PORTB
+[  59]    0050: EE                                    OUT DX,AL
+[  60]        :                                       
+[  61]    0051: B0 53                                 MOV AL,'S'
+[  62]    0053: BA 04 00                              MOV DX, PORTC
+[  63]    0056: EE                                    OUT DX,AL
+[  64]    0057: B9 FF 00                              MOV CX,00FFH; Delay
+[  65]    005A: E2 FE                                 Delay4:loop Delay4
+[  66]    005C: B0 06                                 MOV AL,0110B
+[  67]    005E: BA 02 00                              MOV DX,PORTB
+[  68]    0061: EE                                    OUT DX,AL
+[  69]    0062: B9 FF 00                              MOV CX,00FFH; Delay
+[  70]    0065: E2 FE                                 Delay5:loop Delay5
+[  71]        :                                       
+[  72]    0067: B0 02                                 MOV AL,010B
+[  73]    0069: BA 02 00                              MOV DX,PORTB
+[  74]    006C: EE                                    OUT DX,AL
+[  75]        :                                       
+[  76]    006D: B0 75                                 MOV AL,'u'
+[  77]    006F: BA 04 00                              MOV DX, PORTC
+[  78]    0072: EE                                    OUT DX,AL
+[  79]    0073: B9 FF 00                              MOV CX,00FFH; Delay
+[  80]    0076: E2 FE                                 Delay6:loop Delay6
+[  81]    0078: B0 06                                 MOV AL,0110B
+[  82]    007A: BA 02 00                              MOV DX,PORTB
+[  83]    007D: EE                                    OUT DX,AL
+[  84]    007E: B9 FF 00                              MOV CX,00FFH; Delay
+[  85]    0081: E2 FE                                 Delay7:loop Delay7
+[  86]        :                                       
+[  87]    0083: B0 02                                 MOV AL,010B
+[  88]    0085: BA 02 00                              MOV DX,PORTB
+[  89]    0088: EE                                    OUT DX,AL
+[  90]        :                                       
+[  91]    0089: B0 68                                 MOV AL,'h'
+[  92]    008B: BA 04 00                              MOV DX, PORTC
+[  93]    008E: EE                                    OUT DX,AL
+[  94]    008F: B9 FF 00                              MOV CX,00FFH; Delay
+[  95]    0092: E2 FE                                 Delay8:loop Delay8
+[  96]    0094: B0 06                                 MOV AL,0110B
+[  97]    0096: BA 02 00                              MOV DX,PORTB
+[  98]    0099: EE                                    OUT DX,AL
+[  99]    009A: B9 FF 00                              MOV CX,00FFH; Delay
+[ 100]    009D: E2 FE                                 Delay9:loop Delay9
+[ 101]        :                                       
+[ 102]    009F: B0 02                                 MOV AL,010B
+[ 103]    00A1: BA 02 00                              MOV DX,PORTB
+[ 104]    00A4: EE                                    OUT DX,AL
+[ 105]        :                                       
+[ 106]    00A5: B0 75                                 MOV AL,'u'
+[ 107]    00A7: BA 04 00                              MOV DX, PORTC
+[ 108]    00AA: EE                                    OUT DX,AL
+[ 109]    00AB: B9 FF 00                              MOV CX,0FFH; Delay
+[ 110]    00AE: E2 FE                                 Delay10:loop Delay10
+[ 111]    00B0: B0 06                                 MOV AL,0110B
+[ 112]    00B2: BA 02 00                              MOV DX,PORTB
+[ 113]    00B5: EE                                    OUT DX,AL
+[ 114]    00B6: B9 FF 00                              MOV CX,00FFH; Delay
+[ 115]    00B9: E2 FE                                 Delay11:loop Delay11
+[ 116]        :                                       
+[ 117]    00BB: B0 02                                 MOV AL,010B
+[ 118]    00BD: BA 02 00                              MOV DX,PORTB
+[ 119]    00C0: EE                                    OUT DX,AL
+[ 120]        :                                       
+[ 121]    00C1: B0 3A                                 MOV AL,':'
+[ 122]    00C3: BA 04 00                              MOV DX, PORTC
+[ 123]    00C6: EE                                    OUT DX,AL
+[ 124]    00C7: B9 FF 00                              MOV CX,00FFH; Delay
+[ 125]    00CA: E2 FE                                 Delay12:loop Delay12
+[ 126]    00CC: B0 06                                 MOV AL,0110B
+[ 127]    00CE: BA 02 00                              MOV DX,PORTB
+[ 128]    00D1: EE                                    OUT DX,AL
+[ 129]    00D2: B9 FF 00                              MOV CX,00FFH; Delay
+[ 130]    00D5: E2 FE                                 Delay13:loop Delay13
+[ 131]        :                                       
+[ 132]    00D7: B0 02                                 MOV AL,010B
+[ 133]    00D9: BA 02 00                              MOV DX,PORTB
+[ 134]    00DC: EE                                    OUT DX,AL
+[ 135]        :                                       
+[ 136]        :                                       
+[ 137]        :                                       ;;;;;;;;;;;;
+[ 138]        :                                       
+[ 139]    00DD: B7 00                                 MOV BH, 0
+[ 140]    00DF:                                       XLCDB:
+[ 141]    00DF: BA 00 00                              MOV DX,PORTA
+[ 142]    00E2: EC                                    IN AL,DX
+[ 143]    00E3: 8A D8                                 MOV BL, AL
+[ 144]    00E5: BA 02 00                              MOV DX, PORTB
+[ 145]    00E8: B0 00                                 MOV AL, 00000000B
+[ 146]    00EA: EE                                    OUT DX,AL
+[ 147]    00EB: B5 0F                                 MOV CH, 0FH
+[ 148]    00ED: E2 FE                                 D1: LOOP D1
+[ 149]    00EF: BA 02 00                              MOV DX, PORTB
+[ 150]    00F2: B0 01                                 MOV AL, 00000001B
+[ 151]    00F4: EE                                    OUT DX,AL
+[ 152]        :                                       
+[ 153]    00F5: B5 0F                                 MOV CH, 0FH
+[ 154]    00F7: E2 FE                                 D2: LOOP D2
+[ 155]    00F9: FE C7                                 INC BH
+[ 156]    00FB: 80 FF 10                              CMP BH, 16
+[ 157]    00FE: 72 DF                                 JB XLCDB
+[ 158]        :                                       
+[ 159]    0100: 8A C3                                 MOV AL, BL
+[ 160]    0102: 3C 33                                 CMP AL, 110011B
+[ 161]    0104: 77 1F                                 JA XA
+[ 162]        :                                       
+[ 163]    0106: B0 30                                 MOV AL,'0'
+[ 164]    0108: BA 04 00                              MOV DX, PORTC
+[ 165]    010B: EE                                    OUT DX,AL
+[ 166]    010C: B9 FF 00                              MOV CX,00FFH; Delay
+[ 167]    010F: E2 FE                                 Delay14:loop Delay14
+[ 168]    0111: B0 06                                 MOV AL,0110B
+[ 169]    0113: BA 02 00                              MOV DX,PORTB
+[ 170]    0116: EE                                    OUT DX,AL
+[ 171]    0117: B9 FF 00                              MOV CX,00FFH; Delay
+[ 172]    011A: E2 FE                                 Delay15:loop Delay15
+[ 173]    011C: B0 02                                 MOV AL,010B
+[ 174]    011E: BA 02 00                              MOV DX,PORTB
+[ 175]    0121: EE                                    OUT DX,AL
+[ 176]    0122: E9 AA 01                              JMP XC
+[ 177]        :                                       
+[ 178]    0125:                                       XA:
+[ 179]    0125: B0 31                                 MOV AL,'1'
+[ 180]    0127: BA 04 00                              MOV DX, PORTC
+[ 181]    012A: EE                                    OUT DX,AL
+[ 182]    012B: B9 FF 00                              MOV CX,00FFH; Delay
+[ 183]    012E: E2 FE                                 Delay16:loop Delay16
+[ 184]    0130: B0 06                                 MOV AL,0110B
+[ 185]    0132: BA 02 00                              MOV DX,PORTB
+[ 186]    0135: EE                                    OUT DX,AL
+[ 187]    0136: B9 FF 00                              MOV CX,00FFH; Delay
+[ 188]    0139: E2 FE                                 Delay17:loop Delay17
+[ 189]    013B: B0 03                                 MOV AL,011B
+[ 190]    013D: BA 02 00                              MOV DX,PORTB
+[ 191]    0140: EE                                    OUT DX,AL
+[ 192]        :                                       
+[ 193]    0141: BA 02 00                              MOV DX, PORTB
+[ 194]    0144: B0 00                                 MOV AL, 00B
+[ 195]    0146: EE                                    OUT DX,AL
+[ 196]    0147: 80 EB 33                              SUB BL, 110011B
+[ 197]        :                                       
+[ 198]    014A:                                       XB:
+[ 199]    014A: 8A C3                                 MOV AL, BL
+[ 200]    014C: 3C 2D                                 CMP AL, 101101B    ;90
+[ 201]    014E: 77 51                                 JA XB9
+[ 202]    0150: 3C 28                                 CMP AL, 101000B    ;80
+[ 203]    0152: 77 6F                                 JA XB8
+[ 204]    0154: 3C 23                                 CMP AL, 100011B    ;70
+[ 205]    0156: 76 03 E9 8A 00                        JA XB7
+[ 206]    015B: 3C 1E                                 CMP AL, 11110B ;60
+[ 207]    015D: 76 03 E9 A5 00                        JA XB6
+[ 208]    0162: 3C 19                                 CMP AL, 11001B ;50
+[ 209]    0164: 76 03 E9 C0 00                        JA XB5
+[ 210]    0169: 3C 14                                 CMP AL, 10100B ;40
+[ 211]    016B: 76 03 E9 DB 00                        JA XB4
+[ 212]    0170: 3C 0F                                 CMP AL, 1111B; 30
+[ 213]    0172: 76 03 E9 F5 00                        JA XB3
+[ 214]    0177: 3C 0A                                 CMP AL, 1010B; 20
+[ 215]    0179: 76 03 E9 0F 01                        JA XB2
+[ 216]    017E: 3C 05                                 CMP AL, 101B; 10
+[ 217]    0180: 76 03 E9 29 01                        JA XB1
+[ 218]        :                                       
+[ 219]    0185: B0 30                                 MOV AL,'0'
+[ 220]    0187: BA 04 00                              MOV DX, PORTC
+[ 221]    018A: EE                                    OUT DX,AL
+[ 222]    018B: B9 FF 00                              MOV CX,00FFH; Delay
+[ 223]    018E: E2 FE                                 Delay18:loop Delay18
+[ 224]    0190: B0 06                                 MOV AL,0110B
+[ 225]    0192: BA 02 00                              MOV DX,PORTB
+[ 226]    0195: EE                                    OUT DX,AL
+[ 227]    0196: B9 FF 00                              MOV CX,00FFH; Delay
+[ 228]    0199: E2 FE                                 Delay19:loop Delay19
+[ 229]    019B: B0 03                                 MOV AL,011B
+[ 230]    019D: BA 02 00                              MOV DX,PORTB
+[ 231]    01A0: EE                                    OUT DX,AL
+[ 232]        :                                       
+[ 233]    01A1:                                       XB9:
+[ 234]    01A1: B0 39                                 MOV AL,'9'
+[ 235]    01A3: BA 04 00                              MOV DX, PORTC
+[ 236]    01A6: EE                                    OUT DX,AL
+[ 237]    01A7: B9 FF 00                              MOV CX,00FFH; Delay
+[ 238]    01AA: E2 FE                                 Delay20:loop Delay20
+[ 239]    01AC: B0 06                                 MOV AL,0110B
+[ 240]    01AE: BA 02 00                              MOV DX,PORTB
+[ 241]    01B1: EE                                    OUT DX,AL
+[ 242]    01B2: B9 FF 00                              MOV CX,00FFH; Delay
+[ 243]    01B5: E2 FE                                 Delay21:loop Delay21
+[ 244]    01B7: B0 03                                 MOV AL,011B
+[ 245]    01B9: BA 02 00                              MOV DX,PORTB
+[ 246]    01BC: EE                                    OUT DX,AL
+[ 247]    01BD: 80 EB 2D                              SUB BL, 101101B
+[ 248]    01C0: E9 0C 01                              JMP XC
+[ 249]        :                                       
+[ 250]    01C3:                                       XB8:
+[ 251]    01C3: B0 38                                 MOV AL,'8'
+[ 252]    01C5: BA 04 00                              MOV DX, PORTC
+[ 253]    01C8: EE                                    OUT DX,AL
+[ 254]    01C9: B9 FF 00                              MOV CX,00FFH; Delay
+[ 255]    01CC: E2 FE                                 Delay22:loop Delay22
+[ 256]    01CE: B0 06                                 MOV AL,0110B
+[ 257]    01D0: BA 02 00                              MOV DX,PORTB
+[ 258]    01D3: EE                                    OUT DX,AL
+[ 259]    01D4: B9 FF 00                              MOV CX,00FFH; Delay
+[ 260]    01D7: E2 FE                                 Delay23:loop Delay23
+[ 261]    01D9: B0 03                                 MOV AL,011B
+[ 262]    01DB: BA 02 00                              MOV DX,PORTB
+[ 263]    01DE: EE                                    OUT DX,AL
+[ 264]    01DF: 80 EB 28                              SUB BL, 101000B
+[ 265]    01E2: E9 EA 00                              JMP XC
+[ 266]        :                                       
+[ 267]    01E5:                                       XB7:
+[ 268]    01E5: B0 37                                 MOV AL,'7'
+[ 269]    01E7: BA 04 00                              MOV DX, PORTC
+[ 270]    01EA: EE                                    OUT DX,AL
+[ 271]    01EB: B9 FF 00                              MOV CX,00FFH; Delay
+[ 272]    01EE: E2 FE                                 Delay24:loop Delay24
+[ 273]    01F0: B0 06                                 MOV AL,0110B
+[ 274]    01F2: BA 02 00                              MOV DX,PORTB
+[ 275]    01F5: EE                                    OUT DX,AL
+[ 276]    01F6: B9 FF 00                              MOV CX,00FFH; Delay
+[ 277]    01F9: E2 FE                                 Delay25:loop Delay25
+[ 278]    01FB: B0 03                                 MOV AL,011B
+[ 279]    01FD: BA 02 00                              MOV DX,PORTB
+[ 280]    0200: EE                                    OUT DX,AL
+[ 281]    0201: 80 EB 23                              SUB BL, 100011B
+[ 282]    0204: E9 C8 00                              JMP XC
+[ 283]        :                                       
+[ 284]    0207:                                       XB6:
+[ 285]    0207: B0 36                                 MOV AL,'6'
+[ 286]    0209: BA 04 00                              MOV DX, PORTC
+[ 287]    020C: EE                                    OUT DX,AL
+[ 288]    020D: B9 FF 00                              MOV CX,00FFH; Delay
+[ 289]    0210: E2 FE                                 Delay26:loop Delay26
+[ 290]    0212: B0 06                                 MOV AL,0110B
+[ 291]    0214: BA 02 00                              MOV DX,PORTB
+[ 292]    0217: EE                                    OUT DX,AL
+[ 293]    0218: B9 FF 00                              MOV CX,00FFH; Delay
+[ 294]    021B: E2 FE                                 Delay27:loop Delay27
+[ 295]    021D: B0 03                                 MOV AL,011B
+[ 296]    021F: BA 02 00                              MOV DX,PORTB
+[ 297]    0222: EE                                    OUT DX,AL
+[ 298]    0223: 80 EB 1E                              SUB BL, 11110B
+[ 299]    0226: E9 A6 00                              JMP XC
+[ 300]        :                                       
+[ 301]    0229:                                       XB5:
+[ 302]    0229: B0 35                                 MOV AL,'5'
+[ 303]    022B: BA 04 00                              MOV DX, PORTC
+[ 304]    022E: EE                                    OUT DX,AL
+[ 305]    022F: B9 FF 00                              MOV CX,00FFH; Delay
+[ 306]    0232: E2 FE                                 Delay28:loop Delay28
+[ 307]    0234: B0 06                                 MOV AL,0110B
+[ 308]    0236: BA 02 00                              MOV DX,PORTB
+[ 309]    0239: EE                                    OUT DX,AL
+[ 310]    023A: B9 FF 00                              MOV CX,00FFH; Delay
+[ 311]    023D: E2 FE                                 Delay29:loop Delay29
+[ 312]    023F: B0 03                                 MOV AL,011B
+[ 313]    0241: BA 02 00                              MOV DX,PORTB
+[ 314]    0244: EE                                    OUT DX,AL
+[ 315]    0245: 80 EB 19                              SUB BL, 11001B
+[ 316]    0248: E9 84 00                              JMP XC
+[ 317]        :                                       
+[ 318]    024B:                                       XB4:
+[ 319]    024B: B0 34                                 MOV AL,'4'
+[ 320]    024D: BA 04 00                              MOV DX, PORTC
+[ 321]    0250: EE                                    OUT DX,AL
+[ 322]    0251: B9 FF 00                              MOV CX,00FFH; Delay
+[ 323]    0254: E2 FE                                 Delay30:loop Delay30
+[ 324]    0256: B0 06                                 MOV AL,0110B
+[ 325]    0258: BA 02 00                              MOV DX,PORTB
+[ 326]    025B: EE                                    OUT DX,AL
+[ 327]    025C: B9 FF 00                              MOV CX,00FFH; Delay
+[ 328]    025F: E2 FE                                 Delay31:loop Delay31
+[ 329]    0261: B0 03                                 MOV AL,011B
+[ 330]    0263: BA 02 00                              MOV DX,PORTB
+[ 331]    0266: EE                                    OUT DX,AL
+[ 332]    0267: 80 EB 14                              SUB BL, 10100B
+[ 333]    026A: EB 63                                 JMP XC
+[ 334]        :                                       
+[ 335]    026C:                                       XB3:
+[ 336]    026C: B0 33                                 MOV AL,'3'
+[ 337]    026E: BA 04 00                              MOV DX, PORTC
+[ 338]    0271: EE                                    OUT DX,AL
+[ 339]    0272: B9 FF 00                              MOV CX,00FFH; Delay
+[ 340]    0275: E2 FE                                 Delay32:loop Delay32
+[ 341]    0277: B0 06                                 MOV AL,0110B
+[ 342]    0279: BA 02 00                              MOV DX,PORTB
+[ 343]    027C: EE                                    OUT DX,AL
+[ 344]    027D: B9 FF 00                              MOV CX,00FFH; Delay
+[ 345]    0280: E2 FE                                 Delay33:loop Delay33
+[ 346]    0282: B0 03                                 MOV AL,011B
+[ 347]    0284: BA 02 00                              MOV DX,PORTB
+[ 348]    0287: EE                                    OUT DX,AL
+[ 349]    0288: 80 EB 0F                              SUB BL, 1111B
+[ 350]    028B: EB 42                                 JMP XC
+[ 351]        :                                       
+[ 352]    028D:                                       XB2:
+[ 353]    028D: B0 32                                 MOV AL,'2'
+[ 354]    028F: BA 04 00                              MOV DX, PORTC
+[ 355]    0292: EE                                    OUT DX,AL
+[ 356]    0293: B9 FF 00                              MOV CX,00FFH; Delay
+[ 357]    0296: E2 FE                                 Delay34:loop Delay34
+[ 358]    0298: B0 06                                 MOV AL,0110B
+[ 359]    029A: BA 02 00                              MOV DX,PORTB
+[ 360]    029D: EE                                    OUT DX,AL
+[ 361]    029E: B9 FF 00                              MOV CX,00FFH; Delay
+[ 362]    02A1: E2 FE                                 Delay35:loop Delay35
+[ 363]    02A3: B0 03                                 MOV AL,011B
+[ 364]    02A5: BA 02 00                              MOV DX,PORTB
+[ 365]    02A8: EE                                    OUT DX,AL
+[ 366]    02A9: 80 EB 0A                              SUB BL, 1010B
+[ 367]    02AC: EB 21                                 JMP XC
+[ 368]        :                                       
+[ 369]    02AE:                                       XB1:
+[ 370]    02AE: B0 31                                 MOV AL,'1'
+[ 371]    02B0: BA 04 00                              MOV DX, PORTC
+[ 372]    02B3: EE                                    OUT DX,AL
+[ 373]    02B4: B9 FF 00                              MOV CX,00FFH; Delay
+[ 374]    02B7: E2 FE                                 Delay36:loop Delay36
+[ 375]    02B9: B0 06                                 MOV AL,0110B
+[ 376]    02BB: BA 02 00                              MOV DX,PORTB
+[ 377]    02BE: EE                                    OUT DX,AL
+[ 378]    02BF: B9 FF 00                              MOV CX,00FFH; Delay
+[ 379]    02C2: E2 FE                                 Delay37:loop Delay37
+[ 380]    02C4: B0 03                                 MOV AL,011B
+[ 381]    02C6: BA 02 00                              MOV DX,PORTB
+[ 382]    02C9: EE                                    OUT DX,AL
+[ 383]    02CA: 80 EB 05                              SUB BL, 101B
+[ 384]    02CD: EB 00                                 JMP XC
+[ 385]        :                                       
+[ 386]    02CF:                                       XC:
+[ 387]    02CF: 8A C3                                 MOV AL, BL
+[ 388]    02D1: 3C 04                                 CMP AL, 0100B  ;9
+[ 389]    02D3: 77 2F                                 JA XC9
+[ 390]    02D5: 3C 03                                 CMP AL, 011B   ;8
+[ 391]    02D7: 77 49                                 JA XC8
+[ 392]        :                                       ;CMP AL,       ;7
+[ 393]        :                                       ;JA XC7
+[ 394]    02D9: 3C 02                                 CMP AL, 010B   ;6
+[ 395]    02DB: 77 63                                 JA XC6
+[ 396]        :                                       ;CMP AL,       ;5
+[ 397]        :                                       ;JA XC5
+[ 398]    02DD: 3C 01                                 CMP AL, 01B    ;4
+[ 399]    02DF: 77 7D                                 JA XC4
+[ 400]        :                                       ;CMP AL,       ;3
+[ 401]        :                                       ;JA XC3
+[ 402]    02E1: 3C 00                                 CMP AL, 00B    ;2
+[ 403]    02E3: 76 03 E9 94 00                        JA XC2
+[ 404]        :                                       ;CMP AL,       ;1
+[ 405]        :                                       ;JA XC1
+[ 406]        :                                       
+[ 407]    02E8: B0 30                                 MOV AL,'0'
+[ 408]    02EA: BA 04 00                              MOV DX, PORTC
+[ 409]    02ED: EE                                    OUT DX,AL
+[ 410]    02EE: B9 FF 00                              MOV CX,00FFH; Delay
+[ 411]    02F1: E2 FE                                 Delay38:loop Delay38
+[ 412]    02F3: B0 06                                 MOV AL,0110B
+[ 413]    02F5: BA 02 00                              MOV DX,PORTB
+[ 414]    02F8: EE                                    OUT DX,AL
+[ 415]    02F9: B9 FF 00                              MOV CX,00FFH; Delay
+[ 416]    02FC: E2 FE                                 Delay39:loop Delay39
+[ 417]    02FE: B0 03                                 MOV AL,011B
+[ 418]    0300: BA 02 00                              MOV DX,PORTB
+[ 419]    0303: EE                                    OUT DX,AL
+[ 420]        :                                       
+[ 421]    0304:                                       XC9:
+[ 422]    0304: B0 39                                 MOV AL,'9'
+[ 423]    0306: BA 04 00                              MOV DX, PORTC
+[ 424]    0309: EE                                    OUT DX,AL
+[ 425]    030A: B9 FF 00                              MOV CX,00FFH; Delay
+[ 426]    030D: E2 FE                                 Delay40:loop Delay40
+[ 427]    030F: B0 06                                 MOV AL,0110B
+[ 428]    0311: BA 02 00                              MOV DX,PORTB
+[ 429]    0314: EE                                    OUT DX,AL
+[ 430]    0315: B9 FF 00                              MOV CX,00FFH; Delay
+[ 431]    0318: E2 FE                                 Delay41:loop Delay41
+[ 432]    031A: B0 03                                 MOV AL,011B
+[ 433]    031C: BA 02 00                              MOV DX,PORTB
+[ 434]    031F: EE                                    OUT DX,AL
+[ 435]    0320: EB 78                                 JMP XZ
+[ 436]        :                                       
+[ 437]    0322:                                       XC8:
+[ 438]    0322: B0 38                                 MOV AL,'8'
+[ 439]    0324: BA 04 00                              MOV DX, PORTC
+[ 440]    0327: EE                                    OUT DX,AL
+[ 441]    0328: B9 FF 00                              MOV CX,00FFH; Delay
+[ 442]    032B: E2 FE                                 Delay42:loop Delay42
+[ 443]    032D: B0 06                                 MOV AL,0110B
+[ 444]    032F: BA 02 00                              MOV DX,PORTB
+[ 445]    0332: EE                                    OUT DX,AL
+[ 446]    0333: B9 FF 00                              MOV CX,00FFH; Delay
+[ 447]    0336: E2 FE                                 Delay43:loop Delay43
+[ 448]    0338: B0 03                                 MOV AL,011B
+[ 449]    033A: BA 02 00                              MOV DX,PORTB
+[ 450]    033D: EE                                    OUT DX,AL
+[ 451]    033E: EB 5A                                 JMP XZ
+[ 452]        :                                       
+[ 453]    0340:                                       XC6:
+[ 454]    0340: B0 36                                 MOV AL,'6'
+[ 455]    0342: BA 04 00                              MOV DX, PORTC
+[ 456]    0345: EE                                    OUT DX,AL
+[ 457]    0346: B9 FF 00                              MOV CX,00FFH; Delay
+[ 458]    0349: E2 FE                                 Delay44:loop Delay44
+[ 459]    034B: B0 06                                 MOV AL,0110B
+[ 460]    034D: BA 02 00                              MOV DX,PORTB
+[ 461]    0350: EE                                    OUT DX,AL
+[ 462]    0351: B9 FF 00                              MOV CX,00FFH; Delay
+[ 463]    0354: E2 FE                                 Delay45:loop Delay45
+[ 464]    0356: B0 03                                 MOV AL,011B
+[ 465]    0358: BA 02 00                              MOV DX,PORTB
+[ 466]    035B: EE                                    OUT DX,AL
+[ 467]    035C: EB 3C                                 JMP XZ
+[ 468]        :                                       
+[ 469]    035E:                                       XC4:
+[ 470]    035E: B0 34                                 MOV AL,'4'
+[ 471]    0360: BA 04 00                              MOV DX, PORTC
+[ 472]    0363: EE                                    OUT DX,AL
+[ 473]    0364: B9 FF 00                              MOV CX,00FFH; Delay
+[ 474]    0367: E2 FE                                 Delay46:loop Delay46
+[ 475]    0369: B0 06                                 MOV AL,0110B
+[ 476]    036B: BA 02 00                              MOV DX,PORTB
+[ 477]    036E: EE                                    OUT DX,AL
+[ 478]    036F: B9 FF 00                              MOV CX,00FFH; Delay
+[ 479]    0372: E2 FE                                 Delay47:loop Delay47
+[ 480]    0374: B0 03                                 MOV AL,011B
+[ 481]    0376: BA 02 00                              MOV DX,PORTB
+[ 482]    0379: EE                                    OUT DX,AL
+[ 483]    037A: EB 1E                                 JMP XZ
+[ 484]        :                                       
+[ 485]        :                                       
+[ 486]    037C:                                       XC2:
+[ 487]    037C: B0 32                                 MOV AL,'2'
+[ 488]    037E: BA 04 00                              MOV DX, PORTC
+[ 489]    0381: EE                                    OUT DX,AL
+[ 490]    0382: B9 FF 00                              MOV CX,00FFH; Delay
+[ 491]    0385: E2 FE                                 Delay48:loop Delay48
+[ 492]    0387: B0 06                                 MOV AL,0110B
+[ 493]    0389: BA 02 00                              MOV DX,PORTB
+[ 494]    038C: EE                                    OUT DX,AL
+[ 495]    038D: B9 FF 00                              MOV CX,00FFH; Delay
+[ 496]    0390: E2 FE                                 Delay49:loop Delay49
+[ 497]    0392: B0 03                                 MOV AL,011B
+[ 498]    0394: BA 02 00                              MOV DX,PORTB
+[ 499]    0397: EE                                    OUT DX,AL
+[ 500]    0398: EB 00                                 JMP XZ
+[ 501]        :                                       
+[ 502]    039A:                                       XZ:
+[ 503]        :                                       CODE ENDS
+[ 504]        :                                       END
+[ 505]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

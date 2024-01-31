@@ -1,0 +1,32 @@
+< THE SYMBOL TABLE >  bismillah.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+S                        	0003D     	-1        	NEAR      	CODE      
+DELAY0                   	0004C     	-1        	LABEL     	CODE      
+DELAY1                   	00057     	-1        	LABEL     	CODE      
+DELAY2                   	00062     	-1        	LABEL     	CODE      
+DELAY3                   	0006D     	-1        	LABEL     	CODE      
+DELAY4                   	00078     	-1        	LABEL     	CODE      
+DELAY5                   	00083     	-1        	LABEL     	CODE      
+DELAY6                   	0008E     	-1        	LABEL     	CODE      
+DELAY7                   	00099     	-1        	LABEL     	CODE      
+DELAY8                   	000A4     	-1        	LABEL     	CODE      
+DELAY9                   	000AF     	-1        	LABEL     	CODE      
+P0                       	000B2     	-1        	NEAR      	CODE      
+P1                       	000B9     	-1        	NEAR      	CODE      
+P2                       	000C0     	-1        	NEAR      	CODE      
+P3                       	000C7     	-1        	NEAR      	CODE      
+P4                       	000CE     	-1        	NEAR      	CODE      
+P5                       	000D5     	-1        	NEAR      	CODE      
+P6                       	000DC     	-1        	NEAR      	CODE      
+P7                       	000E3     	-1        	NEAR      	CODE      
+P8                       	000EA     	-1        	NEAR      	CODE      
+P9                       	000F1     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:01:58 PM ] 
+< END >
+ 

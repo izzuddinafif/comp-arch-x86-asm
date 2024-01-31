@@ -1,0 +1,43 @@
+< THE SYMBOL TABLE >  fadsfgzxc.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XX                       	00008     	-1        	LABEL     	CODE      
+DELAY0                   	00017     	-1        	LABEL     	CODE      
+DELAY1                   	00022     	-1        	LABEL     	CODE      
+DELAY2                   	00033     	-1        	LABEL     	CODE      
+DELAY3                   	0003E     	-1        	LABEL     	CODE      
+DELAY4                   	00055     	-1        	LABEL     	CODE      
+DELAY6                   	00066     	-1        	LABEL     	CODE      
+DELAY7                   	00071     	-1        	LABEL     	CODE      
+DELAY8                   	00082     	-1        	LABEL     	CODE      
+DELAY9                   	0008D     	-1        	LABEL     	CODE      
+DELAY10                  	0009E     	-1        	LABEL     	CODE      
+DELAY11                  	000A9     	-1        	LABEL     	CODE      
+DELAY12                  	000BA     	-1        	LABEL     	CODE      
+DELAY13                  	000C5     	-1        	LABEL     	CODE      
+DELAY14                  	000D6     	-1        	LABEL     	CODE      
+DELAY15                  	000E1     	-1        	LABEL     	CODE      
+DELAY16                  	000F2     	-1        	LABEL     	CODE      
+DELAY17                  	000FD     	-1        	LABEL     	CODE      
+DELAY18                  	0010E     	-1        	LABEL     	CODE      
+DELAY19                  	00119     	-1        	LABEL     	CODE      
+DELAY20                  	0012A     	-1        	LABEL     	CODE      
+DELAY21                  	00135     	-1        	LABEL     	CODE      
+DELAY22                  	00146     	-1        	LABEL     	CODE      
+DELAY23                  	00151     	-1        	LABEL     	CODE      
+DELAY24                  	00162     	-1        	LABEL     	CODE      
+DELAY25                  	0016D     	-1        	LABEL     	CODE      
+DELAY26                  	0017E     	-1        	LABEL     	CODE      
+DELAY27                  	00189     	-1        	LABEL     	CODE      
+DELAY28                  	0019A     	-1        	LABEL     	CODE      
+DELAY29                  	001A5     	-1        	LABEL     	CODE      
+DELAY30                  	001B6     	-1        	LABEL     	CODE      
+DELAY31                  	001C1     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 05-Dec-21  --  06:31:48 PM ] 
+< END >
+ 

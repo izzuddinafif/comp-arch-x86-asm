@@ -1,0 +1,32 @@
+< THE SYMBOL TABLE >  HDFGHJFD.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XS                       	00009     	-1        	NEAR      	CODE      
+DELAY0                   	00012     	-1        	LABEL     	CODE      
+DELAY1                   	0001D     	-1        	LABEL     	CODE      
+DELAY2                   	00028     	-1        	LABEL     	CODE      
+DELAY3                   	00033     	-1        	LABEL     	CODE      
+DELAY4                   	0003E     	-1        	LABEL     	CODE      
+DELAY5                   	00049     	-1        	LABEL     	CODE      
+DELAY6                   	00054     	-1        	LABEL     	CODE      
+DELAY7                   	0005F     	-1        	LABEL     	CODE      
+DELAY8                   	0006A     	-1        	LABEL     	CODE      
+DELAY9                   	00075     	-1        	LABEL     	CODE      
+P0                       	00078     	-1        	NEAR      	CODE      
+P1                       	00082     	-1        	NEAR      	CODE      
+P2                       	00089     	-1        	NEAR      	CODE      
+P3                       	00090     	-1        	NEAR      	CODE      
+P4                       	00097     	-1        	NEAR      	CODE      
+P5                       	0009E     	-1        	NEAR      	CODE      
+P6                       	000A5     	-1        	NEAR      	CODE      
+P7                       	000AC     	-1        	NEAR      	CODE      
+P8                       	000B3     	-1        	NEAR      	CODE      
+P9                       	000BA     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:22:46 PM ] 
+< END >
+ 

@@ -1,0 +1,135 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+FINAL.bin -- emu8086 assembler version: 4.08  
+ 
+[ 11-Oct-21  --  07:24:17 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORT_CON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0005: BA 06 00                              MOV AX,DATA
+[  44]    0008: B0 80                                 MOV DS,AX
+[  45]        :                                       
+[  46]        :                                       org 0000h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       ;add your code here
+[  50]    0005:                                       START:
+[  51]        :                                       
+[  52]    0005: BA 06 00                              MOV DX,PORT_CON
+[  53]    0008: B0 80                                 MOV AL,10000000B
+[  54]    000A: EE                                    OUT DX,AL
+[  55]        :                                       
+[  56]        :                                       
+[  57]    000B:                                       XX:
+[  58]    000B: E8 02 00                              CALL X3
+[  59]    000E: EB FB                                 JMP XX
+[  60]        :                                       
+[  61]    0010:                                       X3:
+[  62]    0010: B0 00                                 MOV AL,00000000B;KONTEN
+[  63]    0012: BA 00 00                              MOV DX,PORTA
+[  64]    0015: EE                                    OUT DX,AL
+[  65]    0016: B0 FE                                 MOV AL,11111110B
+[  66]    0018: BA 02 00                              MOV DX,PORTB
+[  67]    001B: EE                                    OUT DX,AL
+[  68]    001C: B0 97                                 MOV AL,10010111B;KONTEN
+[  69]    001E: BA 00 00                              MOV DX,PORTA
+[  70]    0021: EE                                    OUT DX,AL
+[  71]    0022: B0 FD                                 MOV AL,11111101B
+[  72]    0024: BA 02 00                              MOV DX,PORTB
+[  73]    0027: EE                                    OUT DX,AL
+[  74]    0028: B0 92                                 MOV AL,10010010B;KONTEN
+[  75]    002A: BA 00 00                              MOV DX,PORTA
+[  76]    002D: EE                                    OUT DX,AL
+[  77]    002E: B0 FB                                 MOV AL,11111011B
+[  78]    0030: BA 02 00                              MOV DX,PORTB
+[  79]    0033: EE                                    OUT DX,AL
+[  80]    0034: B0 92                                 MOV AL,10010010B;KONTEN
+[  81]    0036: BA 00 00                              MOV DX,PORTA
+[  82]    0039: EE                                    OUT DX,AL
+[  83]    003A: B0 F7                                 MOV AL,11110111B
+[  84]    003C: BA 02 00                              MOV DX,PORTB
+[  85]    003F: EE                                    OUT DX,AL
+[  86]    0040: B0 F2                                 MOV AL,11110010B;KONTEN
+[  87]    0042: BA 00 00                              MOV DX,PORTA
+[  88]    0045: EE                                    OUT DX,AL
+[  89]    0046: B0 EF                                 MOV AL,11101111B
+[  90]    0048: BA 02 00                              MOV DX,PORTB
+[  91]    004B: EE                                    OUT DX,AL
+[  92]    004C: B0 92                                 MOV AL,10010010B;KONTEN
+[  93]    004E: BA 00 00                              MOV DX,PORTA
+[  94]    0051: EE                                    OUT DX,AL
+[  95]    0052: B0 DF                                 MOV AL,11011111B
+[  96]    0054: BA 02 00                              MOV DX,PORTB
+[  97]    0057: EE                                    OUT DX,AL
+[  98]    0058: B0 92                                 MOV AL,10010010B;KONTEN
+[  99]    005A: BA 00 00                              MOV DX,PORTA
+[ 100]    005D: EE                                    OUT DX,AL
+[ 101]    005E: B0 BF                                 MOV AL,10111111B
+[ 102]    0060: BA 02 00                              MOV DX,PORTB
+[ 103]    0063: EE                                    OUT DX,AL
+[ 104]    0064: B0 97                                 MOV AL,10010111B;KONTEN
+[ 105]    0066: BA 00 00                              MOV DX,PORTA
+[ 106]    0069: EE                                    OUT DX,AL
+[ 107]    006A: B0 7F                                 MOV AL,01111111B
+[ 108]    006C: BA 02 00                              MOV DX,PORTB
+[ 109]    006F: EE                                    OUT DX,AL
+[ 110]    0070: C3                                    RET
+[ 111]        :                                       CODE ENDS
+[ 112]        :                                       END
+[ 113]        :                                       HLT           ; halt!
+[ 114]        :                                       
+[ 115]        :                                       
+[ 116]        :                                       
+[ 117]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

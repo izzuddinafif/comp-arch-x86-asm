@@ -1,0 +1,18 @@
+< THE SYMBOL TABLE >  KEKWW.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XX                       	00008     	-1        	LABEL     	CODE      
+XA                       	00010     	-1        	NEAR      	CODE      
+DELAY1                   	00019     	-1        	LABEL     	CODE      
+DELAY2                   	00024     	-1        	LABEL     	CODE      
+XB                       	00027     	-1        	NEAR      	CODE      
+DELAY3                   	00030     	-1        	LABEL     	CODE      
+DELAY4                   	0003B     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 23-Sep-21  --  01:03:40 AM ] 
+< END >
+ 

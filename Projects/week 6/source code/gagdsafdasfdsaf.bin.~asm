@@ -1,0 +1,228 @@
+#make_bin#
+
+; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+; All values between # are directives, these values are saved into a separate .binf file.
+; Before loading .bin file emulator reads .binf file with the same file name.
+
+; All directives are optional, if you don't need them, delete them.
+
+; set loading address, .bin file will be loaded to this address:
+#LOAD_SEGMENT=0500h#
+#LOAD_OFFSET=0000h#
+
+; set entry point:
+#CS=0500h#    ; same as loading segment
+#IP=0000h#    ; same as loading offset
+
+; set segment registers
+#DS=0500h#    ; same as loading segment
+#ES=0500h#    ; same as loading segment
+
+; set stack
+#SS=0500h#    ; same as loading segment
+#SP=FFFEh#    ; set to top of loading segment
+
+; set general registers (optional)
+#AX=0000h#
+#BX=0000h#
+#CX=0000h#
+#DX=0000h#
+#SI=0000h#
+#DI=0000h#
+#BP=0000h#
+
+; add your code here
+
+
+data segment                ; Inisialisasi IC I/O 8255
+
+PORTA EQU 00H
+PORTB EQU 02H
+PORTC EQU 04H
+PCW   EQU 06H
+
+ends
+
+stack segment
+dw   128  dup(0)
+ends
+
+code segment
+start:
+
+mov ax, data            ; masukkan data ke ax
+mov ds, ax              ; isi ds dengan ax
+mov es, ax              ; isi es dengan ax
+MOV DX,PCW              ; masukkan PWC ke DX
+MOV AL,10000010B        ; IC I/O Mode 2 PORTA dan C output, PORTB input
+OUT DX,AL               ; berikan mode ini ke IC I/O
+BEGIN:
+MOV CX,00FFH            ; isi nilai CX dengan 00ffH
+MOV AL,0FEH             ; nilai agar PA0 PORTA IC 8255 berlogika 0, selebihnya 1 atau kolom 1 keypad low
+MOV DX,PORTA            ; masukkan PORTA ke DX
+OUT DX,AL               ; Berikan nilai tadi ke PORTA
+
+EELOOP:
+
+IN AL,PORTB            ; Dapatkan nilai PORTB
+
+CMP AL,0FEH            ; Apakah PORTB bernilai 0FEH atau tombol 1 Keypad ditekan?
+JNE NEXT1              ; Jika tidak, pergi ke NEXT1
+MOV AL,007H;           ; Jika iya, berikan nilai PORC 006H atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 1
+JMP GO                 ; Pergi ke GO
+
+NEXT1:
+CMP AL,0FDH            ; Apakah PORTB bernilai 0FDH atau tombol 4 Keypad ditekan?
+JNE NEXT2              ; Jika tidak, pergi ke NEXT2
+MOV AL,066H;           ; Jika iya, berikan nilai PORC 066H atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 4
+JMP GO                 ; Pergi ke GO
+
+NEXT2:
+CMP AL,0FBH            ; Apakah PORTB bernilai 0FBH atau tombol 7 Keypad ditekan?
+JNE NEXT3              ; Jika tidak, pergi ke NEXT3
+MOV AL,006H;           ; Jika iya, berikan nilai PORC 007H atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 7
+JMP GO                 ; Pergi ke GO
+
+NEXT3:
+CMP AL,0F7H           ; Apakah PORTB bernilai 0F7H atau tombol bintang Keypad ditekan?
+JNE GO                 ; Jika tidak, pergi ke GO
+MOV AL,01110001B;           ; Jika iya, berikan nilai PORC 07CH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan huruf b
+
+GO:
+LOOP EELOOP             ; Looping ke EELOOP sebanyak CX
+
+MOV CX,00FFH            ; isi nilai CX dengan 00ffH
+MOV AL,0FDH             ; nilai agar PA1 PORTA IC 8255 berlogika 0, selebihnya 1  atau kolom 2 keypad low
+MOV DX,PORTA            ; masukkan PORTA ke DX
+OUT DX,AL               ; Berikan nilai tadi ke PORTA
+
+EELOOP2:
+
+IN AL,PORTB            ; Dapatkan nilai PORTB
+CMP AL,0FEH            ; Apakan PORTB bernilai 0FEH atau tombol 2 Keypad ditekan?
+JNE NEXT12             ; Jika tidak, pergi ke NEXT12
+MOV AL,07FH;           ; Jika iya, berikan nilai PORC 05BH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 2
+JMP GO2                ; Pergi ke GO2
+
+NEXT12:
+CMP AL,0FDH            ; Apakah PORTB bernilai 0FDH atau tombol 5 Keypad ditekan?
+JNE NEXT22             ; Jika tidak, pergi ke NEXT22
+MOV AL,06DH;           ; Jika iya, berikan nilai PORC 06DH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 5
+JMP GO2
+
+NEXT22:
+CMP AL,0FBH            ; Apakah PORTB bernilai 0FBH atau tombol 8 Keypad ditekan?
+JNE NEXT32             ; Jika tidak, pergi ke NEXT32
+MOV AL,05BH;           ; Jika iya, berikan nilai PORC 07FH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 8
+JMP GO2                ; Pergi ke GO3
+
+NEXT32:
+CMP AL,0F7H           ; Apakah PORTB bernilai 0F7H atau tombol 0 Keypad ditekan?
+JNE GO2                ; Jika tidak, pergi ke GO2
+MOV AL,03FH;           ; Jika iya, berikan nilai PORC 03FH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 0
+
+GO2:
+LOOP EELOOP2            ; Looping ke EELOOP2 sebanyak CX
+
+MOV CX,00FFH            ; isi nilai CX dengan 00ffH
+MOV AL,0FBH             ; nilai agar PA2 PORTA IC 8255 berlogika 0, selebihnya 1   atau kolom 3 keypad low
+MOV DX,PORTA            ; masukkan PORTA ke DX
+OUT DX,AL               ; Berikan nilai tadi ke PORTA
+
+EELOOP3:
+
+IN AL,PORTB            ; Dapatkan nilai PORTB
+CMP AL,0FEH            ; Apakah PORTB bernilai 0FEH atau tombol 3 Keypad ditekan?
+JNE NEXT13             ; Jika tidak, pergi ke NEXT13
+MOV AL,06FH;           ; Jika iya, berikan nilai PORC 04FH atau 7-Segment pada PORTC
+OUT PORTC,AL           ; Menyalakan angka 3
+JMP GO3                ; Pergi ke GO3
+
+NEXT13: CMP AL,0FDH    ; Apakah PORTB bernilai 0FDH atau tombol 6 Keypad ditekan?
+JNE NEXT23             ; Jika tidak, pergi ke NEXT23
+MOV AL,07DH;           ; Jika iya, berikan nilai PORC 07DH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 6
+JMP GO3                ; Pergi ke GO3
+
+NEXT23:
+CMP AL,0FBH            ; Apakah PORTB bernilai 0FBH atau tombol 9 Keypad ditekan?
+JNE NEXT33             ; Jika tidak, pergi ke NEXT33
+MOV AL,04FH;           ; Jika iya, berikan nilai PORC 06FH atau 7-Segment pada PORTC
+OUT PORTC,AL;          ; Menyalakan angka 9
+JMP GO3                ; Pergi ke GO3
+
+NEXT33:               ; Apakah PORTB bernilai 0F7H atau tombol Pagar Keypad ditekan?
+CMP AL,0F7H           ; Jika tidak, pergi ke GO3
+JNE GO3                ; Jika iya, berikan nilai PORC 00CH atau 7-Segment pada PORTC
+MOV AL,01111001B;           ; Menyalakan huruf A
+OUT PORTC,AL;
+
+GO3:
+LOOP EELOOP3            ; Looping ke EELOOP3 sebanyak CX
+
+MOV CX,00FFH            ; isi nilai CX dengan 00ffH
+MOV AL,0F7H             ; nilai agar PA2 PORTA IC 8255 berlogika 0, selebihnya 1   atau kolom 4 keypad low
+MOV DX,PORTA            ; masukkan PORTA ke DX
+OUT DX,AL               ; Berikan nilai tadi ke PORTA
+
+EELOOP4:
+
+IN AL, PORTB            ; Dapatkan nilai PORTB
+CMP AL,0FEH             ; Apakah PORTB bernilai 0FEH atau tombol A Keypad ditekan?
+JNE NEXT14              ; Jika tidak, pergi ke NEXT24
+MOV AL,01110111B        ; Jika iya, berikan nilai PORTC 01110111B atau A-Segment pada PORTC
+OUT PORTC,AL            ; Menyalakan huruf A
+JMP GO4                 ; Pergi ke GO4
+
+NEXT14:
+CMP AL,0FDH             ; Apakah PORTB bernilai 0FDH atau tombol b Keypad ditekan?
+JNE NEXT24              ; Jika tidak, pergi ke NEXT34
+MOV AL,01111100B        ; Jika iya, berikan nilai PORTC 01111100B atau b-Segment pada PORTC
+OUT PORTC,AL            ; Menyalakan huruf b
+JMP GO4                 ; Pergi ke GO4
+
+NEXT24:
+CMP AL,0FBH             ; Apakah PORTB bernilai 0FBH atau tombol C Keypad ditekan?
+JNE NEXT34              ; Jika tidak, pergi ke NEXT34
+MOV AL,00111001B        ; Jika iya, berikan nilai PORTC 001110011B atau C-Segment pada PORTC
+OUT PORTC,AL            ; menyalakan huruf C
+JMP GO4                 ; Pergi ke GO4
+
+NEXT34:
+CMP AL,0F7H             ; Apakah PORTB bernilai 0F7H atau tombol d Keypad ditekan?
+JNE GO4                 ; Jika tidak, pergi ke GO4
+MOV AL,01011110B        ; Jika iya, berikan nilai PORC 01011110B atau d-Segment pada PORTC
+OUT PORTC,AL            ; menyalakan huruf d
+
+GO4:
+LOOP EELOOP4
+JMP BEGIN               ; Kembali ulangi program
+
+
+
+
+
+
+
+
+
+
+
+
+
+end start
+
+
+HLT           ; halt!
+
+
+
+

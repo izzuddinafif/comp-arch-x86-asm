@@ -1,0 +1,33 @@
+< THE SYMBOL TABLE >  FASFASDFGFXV.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XA                       	00008     	-1        	LABEL     	CODE      
+XS                       	00026     	-1        	NEAR      	CODE      
+DELAY0                   	0002F     	-1        	LABEL     	CODE      
+DELAY1                   	0003A     	-1        	LABEL     	CODE      
+DELAY2                   	00045     	-1        	LABEL     	CODE      
+DELAY3                   	00050     	-1        	LABEL     	CODE      
+DELAY4                   	0005B     	-1        	LABEL     	CODE      
+DELAY5                   	00066     	-1        	LABEL     	CODE      
+DELAY6                   	00071     	-1        	LABEL     	CODE      
+DELAY7                   	0007C     	-1        	LABEL     	CODE      
+DELAY8                   	00087     	-1        	LABEL     	CODE      
+DELAY9                   	00092     	-1        	LABEL     	CODE      
+P0                       	00095     	-1        	NEAR      	CODE      
+P1                       	0009F     	-1        	NEAR      	CODE      
+P2                       	000A9     	-1        	NEAR      	CODE      
+P3                       	000B3     	-1        	NEAR      	CODE      
+P4                       	000BD     	-1        	NEAR      	CODE      
+P5                       	000C7     	-1        	NEAR      	CODE      
+P6                       	000D1     	-1        	NEAR      	CODE      
+P7                       	000DB     	-1        	NEAR      	CODE      
+P8                       	000E5     	-1        	NEAR      	CODE      
+P9                       	000EF     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:33:50 PM ] 
+< END >
+ 

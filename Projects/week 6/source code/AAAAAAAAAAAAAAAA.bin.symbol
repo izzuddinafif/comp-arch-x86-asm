@@ -1,0 +1,31 @@
+< THE SYMBOL TABLE >  AAAAAAAAAAAAAAAA.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00507     	-1        	LABEL     	CODE      
+R1                       	00511     	-1        	LABEL     	CODE      
+C2R1                     	0051E     	-1        	LABEL     	CODE      
+C3R1                     	00529     	-1        	LABEL     	CODE      
+C4R1                     	00534     	-1        	LABEL     	CODE      
+ONR1                     	0053D     	-1        	LABEL     	CODE      
+R2                       	00549     	-1        	LABEL     	CODE      
+C2R2                     	00556     	-1        	LABEL     	CODE      
+C3R2                     	00561     	-1        	LABEL     	CODE      
+C4R2                     	0056C     	-1        	LABEL     	CODE      
+ONR2                     	00575     	-1        	LABEL     	CODE      
+R3                       	00581     	-1        	LABEL     	CODE      
+C2R3                     	0058E     	-1        	LABEL     	CODE      
+C3R3                     	00599     	-1        	LABEL     	CODE      
+C4R3                     	005A4     	-1        	LABEL     	CODE      
+ONR3                     	005AD     	-1        	LABEL     	CODE      
+R4                       	005B9     	-1        	LABEL     	CODE      
+C2R4                     	005C6     	-1        	LABEL     	CODE      
+C3R4                     	005D1     	-1        	LABEL     	CODE      
+C4R4                     	005DC     	-1        	LABEL     	CODE      
+ONR4                     	005E5     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 03-Oct-21  --  10:15:55 PM ] 
+< END >
+ 

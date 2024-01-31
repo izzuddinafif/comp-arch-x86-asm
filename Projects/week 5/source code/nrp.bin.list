@@ -1,0 +1,109 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+nrp.bin -- emu8086 assembler version: 4.08  
+ 
+[ 23-Sep-21  --  12:41:46 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#    ; same as loading segment
+[  15]        :                                       #IP=0000h#    ; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#    ; same as loading segment
+[  19]        :                                       #ES=0500h#    ; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#    ; same as loading segment
+[  23]        :                                       #SP=FFFEh#    ; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORT_CON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0005: BA 06 00                              MOV AX,DATA
+[  44]    0008: B0 80                                 MOV DS,AX
+[  45]        :                                       
+[  46]        :                                       org 0000h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       ;add your code here
+[  50]    0005:                                       START:
+[  51]        :                                       
+[  52]    0005: BA 06 00                              MOV DX, PORT_CON
+[  53]    0008: B0 80                                 MOV AL, 10000000B; PORT A as Output
+[  54]    000A: EE                                    OUT DX, AL
+[  55]        :                                       
+[  56]    000B: EB 00                                 JMP XX
+[  57]        :                                       
+[  58]    000D:                                       XX:
+[  59]        :                                       
+[  60]        :                                       
+[  61]    000D: B0 06                                 MOV AL, 0000110B ; displaying 1
+[  62]    000F: BA 00 00                              MOV DX, PORTA
+[  63]    0012: EE                                    OUT DX,AL
+[  64]    0013: B9 36 DF                              MOV CX,0DF36H; Delay
+[  65]    0016: E2 FE                                 Delay1:loop Delay1
+[  66]        :                                       
+[  67]    0018: B0 06                                 MOV AL, 0000110B ; displaying 1
+[  68]    001A: BA 02 00                              MOV DX, PORTB
+[  69]    001D: EE                                    OUT DX,AL
+[  70]    001E: B9 36 DF                              MOV CX,0DF36H; Delay
+[  71]    0021: E2 FE                                 Delay2:loop Delay2
+[  72]        :                                       
+[  73]        :                                       
+[  74]    0023: EB E8                                 JMP XX
+[  75]        :                                       
+[  76]    0025: EB DE                                 JMP START
+[  77]        :                                       
+[  78]        :                                       CODE ENDS
+[  79]        :                                       END
+[  80]        :                                       
+[  81]        :                                       
+[  82]        :                                       HLT           ; halt!
+[  83]        :                                       
+[  84]        :                                       
+[  85]        :                                       
+[  86]        :                                       
+[  87]        :                                       
+[  88]        :                                       
+[  89]        :                                       ; [SOURCE]: C:\Users\izzud\Downloads\2421600004.asm
+[  90]        :                                       
+[  91]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,282 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+keypad PORTC.bin -- emu8086 assembler version: 4.08  
+ 
+[ 10-Oct-21  --  10:52:01 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORT_CON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0005: BA 06 00                              MOV AX,DATA
+[  44]    0008: B0 88                                 MOV DS,AX
+[  45]        :                                       
+[  46]        :                                       org 0000h
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       ;add your code here
+[  50]    0005:                                       START:
+[  51]        :                                       
+[  52]    0005: BA 06 00                              MOV DX, PORT_CON
+[  53]    0008: B0 88                                 MOV AL, 10001000B; PORT A as Output Port C Upper as Input Port C Lower as Output
+[  54]    000A: EE                                    OUT DX, AL
+[  55]    000B: E8 BF 00                              CALL F0
+[  56]        :                                       
+[  57]    000E: EB 00                                 JMP XX
+[  58]        :                                       
+[  59]    0010:                                       XX:
+[  60]        :                                       ; Keluarkan output scanning untuk baris A keypad
+[  61]    0010: B0 FE                                 MOV AL, 11111110B
+[  62]    0012: BA 04 00                              MOV DX, PORTC
+[  63]    0015: EE                                    OUT DX,AL
+[  64]        :                                       
+[  65]        :                                       ; Check tombol yang ditekan (untuk setiap kolom (1-4))
+[  66]    0016: E4 04                                 IN AL, PORTC
+[  67]    0018: 8A D8                                 MOV BL, AL; KALO TERIMA INPUT DI PORTC, HARUS DI AND DULU UTK CEK UPPER ATO LOWER
+[  68]    001A: 80 E3 F0                              AND BL, 11110000B
+[  69]    001D: 80 FB E0                              CMP BL, 11100000B
+[  70]    0020: 75 03 E9 FC 00                        JE F7
+[  71]    0025: 80 FB D0                              CMP BL, 11010000B
+[  72]    0028: 75 03 E9 00 01                        JE F8
+[  73]    002D: 80 FB B0                              CMP BL, 10110000B
+[  74]    0030: 75 03 E9 04 01                        JE F9
+[  75]    0035: 80 FB 70                              CMP BL, 01110000B
+[  76]    0038: 75 03 E9 08 01                        JE FA
+[  77]    003D: E8 87 00                              CALL DELAY
+[  78]        :                                       
+[  79]        :                                       ; Keluarkan output scanning untuk baris B keypad
+[  80]    0040: B0 FD                                 MOV AL, 11111101B
+[  81]    0042: BA 04 00                              MOV DX, PORTC
+[  82]    0045: EE                                    OUT DX,AL
+[  83]        :                                       
+[  84]        :                                       ; Check tombol yang ditekan (untuk setiap kolom (1-4))
+[  85]    0046: E4 04                                 IN AL, PORTC
+[  86]    0048: 8A D8                                 MOV BL, AL
+[  87]    004A: 80 E3 F0                              AND BL, 11110000B
+[  88]    004D: 80 FB E0                              CMP BL, 11100000B
+[  89]    0050: 75 03 E9 A8 00                        JE F4
+[  90]    0055: 80 FB D0                              CMP BL, 11010000B
+[  91]    0058: 75 03 E9 AC 00                        JE F5
+[  92]    005D: 80 FB B0                              CMP BL, 10110000B
+[  93]    0060: 75 03 E9 B0 00                        JE F6
+[  94]    0065: 80 FB 70                              CMP BL, 01110000B
+[  95]    0068: 75 03 E9 E4 00                        JE FB
+[  96]    006D: E8 57 00                              CALL DELAY
+[  97]        :                                       
+[  98]        :                                       ; Keluarkan output scanning untuk baris C keypad
+[  99]    0070: B0 FB                                 MOV AL, 11111011B
+[ 100]    0072: BA 04 00                              MOV DX, PORTC
+[ 101]    0075: EE                                    OUT DX,AL
+[ 102]        :                                       
+[ 103]        :                                       ; Check tombol yang ditekan (untuk setiap kolom (1-4))
+[ 104]    0076: E4 04                                 IN AL, PORTC
+[ 105]    0078: 8A D8                                 MOV BL, AL
+[ 106]    007A: 80 E3 F0                              AND BL, 11110000B
+[ 107]    007D: 80 FB E0                              CMP BL, 11100000B
+[ 108]    0080: 74 57                                 JE F1
+[ 109]    0082: 80 FB D0                              CMP BL, 11010000B
+[ 110]    0085: 74 5E                                 JE F2
+[ 111]    0087: 80 FB B0                              CMP BL, 10110000B
+[ 112]    008A: 74 65                                 JE F3
+[ 113]    008C: 80 FB 70                              CMP BL, 01110000B
+[ 114]    008F: 75 03 E9 C9 00                        JE FC
+[ 115]    0094: E8 30 00                              CALL DELAY
+[ 116]        :                                       
+[ 117]        :                                       ; Keluarkan output scanning untuk baris D keypad
+[ 118]    0097: B0 F7                                 MOV AL, 11110111B
+[ 119]    0099: BA 04 00                              MOV DX, PORTC
+[ 120]    009C: EE                                    OUT DX,AL
+[ 121]        :                                       
+[ 122]        :                                       ; Check tombol yang ditekan (untuk setiap kolom (1-4))
+[ 123]    009D: E4 04                                 IN AL, PORTC
+[ 124]    009F: 8A D8                                 MOV BL, AL
+[ 125]    00A1: 80 E3 F0                              AND BL, 11110000B
+[ 126]    00A4: 80 FB E0                              CMP BL, 11100000B
+[ 127]    00A7: 75 03 E9 D5 00                        JE FF
+[ 128]    00AC: 80 FB D0                              CMP BL, 11010000B
+[ 129]    00AF: 74 1C                                 JE F0
+[ 130]    00B1: 80 FB B0                              CMP BL, 10110000B
+[ 131]    00B4: 75 03 E9 BC 00                        JE FE
+[ 132]    00B9: 80 FB 70                              CMP BL, 01110000B
+[ 133]    00BC: 75 03 E9 A8 00                        JE FD
+[ 134]    00C1: E8 03 00                              CALL DELAY
+[ 135]        :                                       
+[ 136]    00C4: E9 49 FF                              JMP XX
+[ 137]        :                                       
+[ 138]        :                                       
+[ 139]    00C7:                                       DELAY:
+[ 140]    00C7: B9 F6 00                              MOV CX,0F6H; Delay
+[ 141]    00CA: E2 FE                                 Delay9:loop Delay9
+[ 142]    00CC: C3                                    RET
+[ 143]        :                                       
+[ 144]    00CD:                                       F0:
+[ 145]    00CD: B0 3F                                 MOV AL, 00111111B ; displaying 0
+[ 146]    00CF: BA 00 00                              MOV DX, PORTA
+[ 147]    00D2: EE                                    OUT DX,AL
+[ 148]    00D3: E8 F1 FF                              CALL DELAY
+[ 149]    00D6: E9 37 FF                              JMP XX
+[ 150]        :                                       
+[ 151]    00D9:                                       F1:
+[ 152]    00D9: B0 06                                 MOV AL, 00000110B  ; Displaying 1
+[ 153]    00DB: BA 00 00                              MOV DX, PORTA
+[ 154]    00DE: EE                                    OUT DX,AL
+[ 155]    00DF: E8 E5 FF                              CALL DELAY
+[ 156]    00E2: E9 2B FF                              JMP XX
+[ 157]        :                                       
+[ 158]    00E5:                                       F2:
+[ 159]    00E5: B0 5B                                 MOV AL, 01011011B  ;Displaying 2
+[ 160]    00E7: BA 00 00                              MOV DX, PORTA
+[ 161]    00EA: EE                                    OUT DX,AL
+[ 162]    00EB: E8 D9 FF                              CALL DELAY
+[ 163]    00EE: E9 1F FF                              JMP XX
+[ 164]        :                                       
+[ 165]    00F1:                                       F3:
+[ 166]    00F1: B0 4F                                 MOV AL, 01001111B  ; Displaying 3
+[ 167]    00F3: BA 00 00                              MOV DX, PORTA
+[ 168]    00F6: EE                                    OUT DX,AL
+[ 169]    00F7: E8 CD FF                              CALL DELAY
+[ 170]    00FA: E9 13 FF                              JMP XX
+[ 171]        :                                       
+[ 172]    00FD:                                       F4:
+[ 173]    00FD: B0 66                                 MOV AL, 01100110B  ; Displaying 4
+[ 174]    00FF: BA 00 00                              MOV DX, PORTA
+[ 175]    0102: EE                                    OUT DX,AL
+[ 176]    0103: E8 C1 FF                              CALL DELAY
+[ 177]    0106: E9 07 FF                              JMP XX
+[ 178]        :                                       
+[ 179]    0109:                                       F5:
+[ 180]    0109: B0 6D                                 MOV AL, 01101101B    ;Displaying 5
+[ 181]    010B: BA 00 00                              MOV DX, PORTA
+[ 182]    010E: EE                                    OUT DX,AL
+[ 183]    010F: E8 B5 FF                              CALL DELAY
+[ 184]    0112: E9 FB FE                              JMP XX
+[ 185]        :                                       
+[ 186]    0115:                                       F6:
+[ 187]    0115: B0 7D                                 MOV AL, 01111101B  ;Displaying 6
+[ 188]    0117: BA 00 00                              MOV DX, PORTA
+[ 189]    011A: EE                                    OUT DX,AL
+[ 190]    011B: E8 A9 FF                              CALL DELAY
+[ 191]    011E: E9 EF FE                              JMP XX
+[ 192]        :                                       
+[ 193]    0121:                                       F7:
+[ 194]    0121: B0 07                                 MOV AL, 00000111B  ;Displaying 7
+[ 195]    0123: BA 00 00                              MOV DX, PORTA
+[ 196]    0126: EE                                    OUT DX,AL
+[ 197]    0127: E8 9D FF                              CALL DELAY
+[ 198]    012A: E9 E3 FE                              JMP XX
+[ 199]        :                                       
+[ 200]    012D:                                       F8:
+[ 201]    012D: B0 7F                                 MOV AL, 01111111B  ;Displaying 8
+[ 202]    012F: BA 00 00                              MOV DX, PORTA
+[ 203]    0132: EE                                    OUT DX,AL
+[ 204]    0133: E8 91 FF                              CALL DELAY
+[ 205]    0136: E9 D7 FE                              JMP XX
+[ 206]        :                                       
+[ 207]    0139:                                       F9:
+[ 208]    0139: B0 6F                                 MOV AL, 01101111B      ; Displaying 9
+[ 209]    013B: BA 00 00                              MOV DX, PORTA
+[ 210]    013E: EE                                    OUT DX,AL
+[ 211]    013F: E8 85 FF                              CALL DELAY
+[ 212]    0142: E9 CB FE                              JMP XX
+[ 213]        :                                       
+[ 214]    0145:                                       FA:
+[ 215]    0145: B0 77                                 MOV AL, 01110111B      ; Displaying A
+[ 216]    0147: BA 00 00                              MOV DX, PORTA
+[ 217]    014A: EE                                    OUT DX,AL
+[ 218]    014B: E8 79 FF                              CALL DELAY
+[ 219]    014E: E9 BF FE                              JMP XX
+[ 220]        :                                       
+[ 221]    0151:                                       FB:
+[ 222]    0151: B0 7C                                 MOV AL, 01111100B      ; Displaying B
+[ 223]    0153: BA 00 00                              MOV DX, PORTA
+[ 224]    0156: EE                                    OUT DX,AL
+[ 225]    0157: E8 6D FF                              CALL DELAY
+[ 226]    015A: E9 B3 FE                              JMP XX
+[ 227]        :                                       
+[ 228]    015D:                                       FC:
+[ 229]    015D: B0 39                                 MOV AL, 00111001B      ; Displaying C
+[ 230]    015F: BA 00 00                              MOV DX, PORTA
+[ 231]    0162: EE                                    OUT DX,AL
+[ 232]    0163: E8 61 FF                              CALL DELAY
+[ 233]    0166: E9 A7 FE                              JMP XX
+[ 234]        :                                       
+[ 235]    0169:                                       FD:
+[ 236]    0169: B0 5E                                 MOV AL, 01011110B      ; Displaying D
+[ 237]    016B: BA 00 00                              MOV DX, PORTA
+[ 238]    016E: EE                                    OUT DX,AL
+[ 239]    016F: E8 55 FF                              CALL DELAY
+[ 240]    0172: E9 9B FE                              JMP XX
+[ 241]        :                                       
+[ 242]    0175:                                       FE:
+[ 243]    0175: B0 79                                 MOV AL, 01111001B      ; Displaying E
+[ 244]    0177: BA 00 00                              MOV DX, PORTA
+[ 245]    017A: EE                                    OUT DX,AL
+[ 246]    017B: E8 49 FF                              CALL DELAY
+[ 247]    017E: E9 8F FE                              JMP XX
+[ 248]        :                                       
+[ 249]    0181:                                       FF:
+[ 250]    0181: B0 71                                 MOV AL, 01110001B      ; Displaying F
+[ 251]    0183: BA 00 00                              MOV DX, PORTA
+[ 252]    0186: EE                                    OUT DX,AL
+[ 253]    0187: E8 3D FF                              CALL DELAY
+[ 254]    018A: E9 83 FE                              JMP XX
+[ 255]        :                                       
+[ 256]        :                                       
+[ 257]        :                                       CODE ENDS
+[ 258]        :                                       END
+[ 259]        :                                       
+[ 260]        :                                       HLT           ; halt!
+[ 261]        :                                       
+[ 262]        :                                       
+[ 263]        :                                       
+[ 264]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

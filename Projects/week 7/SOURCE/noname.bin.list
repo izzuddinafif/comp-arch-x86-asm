@@ -1,0 +1,105 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+noname.bin -- emu8086 assembler version: 4.08  
+ 
+[ 11-Oct-21  --  07:59:18 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       ASSUME CS:CODE,DS:CODE
+[  37]        :                                       PORTA EQU 00H
+[  38]        :                                       PORTB EQU 02H
+[  39]        :                                       PORTC EQU 04H
+[  40]        :                                       PORT_CON EQU 06H
+[  41]        :                                       DATA ENDS
+[  42]        :                                       
+[  43]        :                                       CODE SEGMENT
+[  44]    0005: B0 80 E6                              MOV AX,DATA
+[  45]    0008: 06 BE                                 MOV DS,AX
+[  46]        :                                       ORG 0000H
+[  47]    0005: B0 80                                 MOV AL, 10000000B       ;Activate Signal
+[  48]    0007: E6 06                                 OUT PORT_CON, AL       ;Off Signal
+[  49]    0009: BE 2C 00                              L1: MOV SI, OFFSET FONT ;Assigning source address to Memory address/                            ;offset of FONT Variable
+[  50]    000C: B4 FE                                 MOV AH, 11111110B
+[  51]    000E: 2E 8A 04                              L2: MOV AL, BYTE PTR CS:[SI]
+[  52]    0011: E6 00                                 OUT PORTA, AL
+[  53]    0013: 8A C4                                 MOV AL, AH
+[  54]    0015: E6 02                                 OUT PORTB, AL
+[  55]    0017: E8 0D 00                              CALL TIMER
+[  56]    001A: B0 00                                 MOV AL,00H
+[  57]    001C: E6 02                                 OUT PORTB,AL
+[  58]    001E: 46                                    INC SI
+[  59]    001F: F8                                    CLC
+[  60]    0020: D0 C4                                 ROL AH, 1
+[  61]    0022: 73 EA                                 JNC L2
+[  62]    0024: EB E3                                 JMP L1
+[  63]    0026: CC                                    INT 3
+[  64]    0027: B9 2C 01                              TIMER: MOV CX, 300
+[  65]    002A: 90                                    TIMER1: NOP
+[  66]    002B: 90                                    NOP
+[  67]    002C: 90                                    NOP
+[  68]    002D: 90                                    NOP
+[  69]    002E: E2 FA                                 LOOP TIMER1
+[  70]    0030: C3                                    RET
+[  71]    0031: FF                                    FONT: DB 11111111B
+[  72]    0032: C9                                    DB 11001001B
+[  73]    0033: B4                                    DB 10110100B
+[  74]    0034: B6                                    DB 10110110B
+[  75]    0035: B6                                    DB 10110110B
+[  76]    0036: B6                                    DB 10110110B
+[  77]    0037: 80                                    DB 10000000B
+[  78]    0038: FF                                    DB 11111111B
+[  79]        :                                       
+[  80]        :                                       CODE ENDS
+[  81]        :                                       END
+[  82]        :                                       
+[  83]        :                                       HLT           ; halt!
+[  84]        :                                       
+[  85]        :                                       
+[  86]        :                                       
+[  87]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

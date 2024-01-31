@@ -1,0 +1,33 @@
+< THE SYMBOL TABLE >  gagdsafdasfdsaf.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00010     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	code      
+BEGIN                    	0000D     	-1        	LABEL     	code      
+EELOOP                   	00016     	-1        	LABEL     	code      
+NEXT1                    	00022     	-1        	LABEL     	code      
+NEXT2                    	0002C     	-1        	LABEL     	code      
+NEXT3                    	00036     	-1        	LABEL     	code      
+GO                       	0003E     	-1        	LABEL     	code      
+EELOOP2                  	00049     	-1        	LABEL     	code      
+NEXT12                   	00055     	-1        	LABEL     	code      
+NEXT22                   	0005F     	-1        	LABEL     	code      
+NEXT32                   	00069     	-1        	LABEL     	code      
+GO2                      	00071     	-1        	LABEL     	code      
+EELOOP3                  	0007C     	-1        	LABEL     	code      
+NEXT13                   	00088     	-1        	LABEL     	code      
+NEXT23                   	00092     	-1        	LABEL     	code      
+NEXT33                   	0009C     	-1        	LABEL     	code      
+GO3                      	000A4     	-1        	LABEL     	code      
+EELOOP4                  	000AF     	-1        	LABEL     	code      
+NEXT14                   	000BB     	-1        	LABEL     	code      
+NEXT24                   	000C5     	-1        	LABEL     	code      
+NEXT34                   	000CF     	-1        	LABEL     	code      
+GO4                      	000D7     	-1        	LABEL     	code      
+===================================================================================================
+[ 03-Oct-21  --  10:21:53 PM ] 
+< END >
+ 

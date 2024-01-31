@@ -1,0 +1,11 @@
+kernel
+cache
+register
+uniprosesor
+chipset
+integrated memory controller
+
+
+apa sebenarnya ghz dan apa pengaruh ke kecepatan
+cache vs register
+quad core 2 ghz vs octa core 1 ghz

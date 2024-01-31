@@ -1,0 +1,16 @@
+< THE SYMBOL TABLE >  fzvcvzxczvx.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+X1                       	00008     	-1        	LABEL     	CODE      
+XON                      	00012     	-1        	LABEL     	CODE      
+XOFF                     	0001D     	-1        	LABEL     	CODE      
+DELAY_20MS               	00028     	-1        	NEAR      	CODE      
+X9                       	0002B     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 19-Sep-21  --  05:21:04 PM ] 
+< END >
+ 

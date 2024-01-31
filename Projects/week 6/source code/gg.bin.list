@@ -1,0 +1,225 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+gg.bin -- emu8086 assembler version: 4.08  
+ 
+[ 03-Oct-21  --  11:11:53 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       #make_bin#
+[   2]        :                                       
+[   3]        :                                       ; BIN is plain binary format similar to .com format, but not limited to 1 segment;
+[   4]        :                                       ; All values between # are directives, these values are saved into a separate .binf file.
+[   5]        :                                       ; Before loading .bin file emulator reads .binf file with the same file name.
+[   6]        :                                       
+[   7]        :                                       ; All directives are optional, if you don't need them, delete them.
+[   8]        :                                       
+[   9]        :                                       ; set loading address, .bin file will be loaded to this address:
+[  10]        :                                       #LOAD_SEGMENT=0500h#
+[  11]        :                                       #LOAD_OFFSET=0000h#
+[  12]        :                                       
+[  13]        :                                       ; set entry point:
+[  14]        :                                       #CS=0500h#	; same as loading segment
+[  15]        :                                       #IP=0000h#	; same as loading offset
+[  16]        :                                       
+[  17]        :                                       ; set segment registers
+[  18]        :                                       #DS=0500h#	; same as loading segment
+[  19]        :                                       #ES=0500h#	; same as loading segment
+[  20]        :                                       
+[  21]        :                                       ; set stack
+[  22]        :                                       #SS=0500h#	; same as loading segment
+[  23]        :                                       #SP=FFFEh#	; set to top of loading segment
+[  24]        :                                       
+[  25]        :                                       ; set general registers (optional)
+[  26]        :                                       #AX=0000h#
+[  27]        :                                       #BX=0000h#
+[  28]        :                                       #CX=0000h#
+[  29]        :                                       #DX=0000h#
+[  30]        :                                       #SI=0000h#
+[  31]        :                                       #DI=0000h#
+[  32]        :                                       #BP=0000h#
+[  33]        :                                       
+[  34]        :                                       ; add your code here
+[  35]        :                                       DATA SEGMENT
+[  36]        :                                       PORTA EQU 00H
+[  37]        :                                       PORTB EQU 02H
+[  38]        :                                       PORTC EQU 04H
+[  39]        :                                       PORTCON EQU 06H
+[  40]        :                                       DATA ENDS
+[  41]        :                                       
+[  42]        :                                       CODE SEGMENT
+[  43]    0000: B8 00 00                              MOV AX,DATA
+[  44]    0003: 8E D8                                 MOV DS,AX
+[  45]        :                                       
+[  46]    0005: BA 06 00                              MOV DX,PORTCON
+[  47]    0008: B0 82                                 MOV AL,10000010B
+[  48]    000A: EE                                    OUT DX,AL
+[  49]        :                                       
+[  50]    000B:                                       START:
+[  51]    000B: B0 FE                                 MOV AL,00FEH
+[  52]    000D: BA 00 00                              MOV DX,PORTA
+[  53]    0010: EE                                    OUT DX,AL
+[  54]    0011: B9 FF 00                              MOV CX,00FFH
+[  55]        :                                       
+[  56]    0014:                                       R1:
+[  57]    0014: E4 02                                 IN AL,PORTB
+[  58]        :                                       
+[  59]    0016: 3C FE                                 CMP AL,000FEH
+[  60]    0018: 75 06                                 JNE C2R1
+[  61]    001A: B0 07                                 MOV AL,0007H; DISPLAYING 7
+[  62]    001C: E6 04                                 OUT PORTC,AL
+[  63]    001E: EB 1C                                 JMP ONR1
+[  64]        :                                       
+[  65]    0020:                                       C2R1:
+[  66]    0020: 3C FD                                 CMP AL,000FDH
+[  67]    0022: 75 06                                 JNE C3R1
+[  68]    0024: B0 66                                 MOV AL,0066H; DISPLAYING 4
+[  69]    0026: E6 04                                 OUT PORTC,AL
+[  70]    0028: EB 12                                 JMP ONR1
+[  71]        :                                       
+[  72]    002A:                                       C3R1:
+[  73]    002A: 3C FB                                 CMP AL,000FBH
+[  74]    002C: 75 06                                 JNE C4R1
+[  75]    002E: B0 06                                 MOV AL,0006H; DISPLAYING 1
+[  76]    0030: E6 04                                 OUT PORTC,AL
+[  77]    0032: EB 08                                 JMP ONR1
+[  78]        :                                       
+[  79]    0034:                                       C4R1:
+[  80]    0034: 3C F7                                 CMP AL,000F7H
+[  81]    0036: 75 04                                 JNE ONR1
+[  82]    0038: B0 77                                 MOV AL,0077H; DISPLAYING A
+[  83]    003A: E6 04                                 OUT PORTC,AL
+[  84]        :                                       
+[  85]    003C:                                       ONR1:
+[  86]    003C: E2 D6                                 LOOP R1
+[  87]        :                                       
+[  88]    003E: B0 FD                                 MOV AL,00FDH
+[  89]    0040: BA 00 00                              MOV DX,PORTA
+[  90]    0043: EE                                    OUT DX,AL
+[  91]    0044: B9 FF 00                              MOV CX,00FFH
+[  92]        :                                       
+[  93]    0047:                                       R2:
+[  94]    0047: E4 02                                 IN AL,PORTB
+[  95]        :                                       
+[  96]    0049: 3C FE                                 CMP AL,000FEH
+[  97]    004B: 75 06                                 JNE C2R2
+[  98]    004D: B0 7F                                 MOV AL,007FH; DISPLAYING 8
+[  99]    004F: E6 04                                 OUT PORTC,AL
+[ 100]    0051: EB 1C                                 JMP ONR2
+[ 101]        :                                       
+[ 102]    0053:                                       C2R2:
+[ 103]    0053: 3C FD                                 CMP AL,000FDH
+[ 104]    0055: 75 06                                 JNE C3R2
+[ 105]    0057: B0 6D                                 MOV AL,006DH; DISPLAYING 5
+[ 106]    0059: E6 04                                 OUT PORTC,AL
+[ 107]    005B: EB 12                                 JMP ONR2
+[ 108]        :                                       
+[ 109]    005D:                                       C3R2:
+[ 110]    005D: 3C FB                                 CMP AL,000FBH
+[ 111]    005F: 75 06                                 JNE C4R2
+[ 112]    0061: B0 5B                                 MOV AL,005BH; DISPLAYING 2
+[ 113]    0063: E6 04                                 OUT PORTC,AL
+[ 114]    0065: EB 08                                 JMP ONR2
+[ 115]        :                                       
+[ 116]    0067:                                       C4R2:
+[ 117]    0067: 3C F7                                 CMP AL,000F7H
+[ 118]    0069: 75 04                                 JNE ONR2
+[ 119]    006B: B0 3F                                 MOV AL,003FH; DISPLAYING 0
+[ 120]    006D: E6 04                                 OUT PORTC,AL
+[ 121]        :                                       
+[ 122]    006F:                                       ONR2:
+[ 123]    006F: E2 D6                                 LOOP R2
+[ 124]        :                                       
+[ 125]    0071: B0 FB                                 MOV AL,00FBH
+[ 126]    0073: BA 00 00                              MOV DX,PORTA
+[ 127]    0076: EE                                    OUT DX,AL
+[ 128]    0077: B9 FF 00                              MOV CX,00FFH
+[ 129]        :                                       
+[ 130]    007A:                                       R3:
+[ 131]    007A: E4 02                                 IN AL,PORTB
+[ 132]        :                                       
+[ 133]    007C: 3C FE                                 CMP AL,000FEH
+[ 134]    007E: 75 06                                 JNE C2R3
+[ 135]    0080: B0 6F                                 MOV AL,006FH; DISPLAYING 9
+[ 136]    0082: E6 04                                 OUT PORTC,AL
+[ 137]    0084: EB 1C                                 JMP ONR3
+[ 138]        :                                       
+[ 139]    0086:                                       C2R3:
+[ 140]    0086: 3C FD                                 CMP AL,000FDH
+[ 141]    0088: 75 06                                 JNE C3R3
+[ 142]    008A: B0 7D                                 MOV AL,007DH; DISPLAYING 6
+[ 143]    008C: E6 04                                 OUT PORTC,AL
+[ 144]    008E: EB 12                                 JMP ONR3
+[ 145]        :                                       
+[ 146]    0090:                                       C3R3:
+[ 147]    0090: 3C FB                                 CMP AL,000FBH
+[ 148]    0092: 75 06                                 JNE C4R3
+[ 149]    0094: B0 4F                                 MOV AL,004FH; DISPLAYING 3
+[ 150]    0096: E6 04                                 OUT PORTC,AL
+[ 151]    0098: EB 08                                 JMP ONR3
+[ 152]        :                                       
+[ 153]    009A:                                       C4R3:
+[ 154]    009A: 3C F7                                 CMP AL,000F7H
+[ 155]    009C: 75 04                                 JNE ONR3
+[ 156]    009E: B0 7C                                 MOV AL,007CH; DISPLAYING b
+[ 157]    00A0: E6 04                                 OUT PORTC,AL
+[ 158]        :                                       
+[ 159]    00A2:                                       ONR3:
+[ 160]    00A2: E2 D6                                 LOOP R3
+[ 161]        :                                       
+[ 162]    00A4: B0 F7                                 MOV AL,00F7H
+[ 163]    00A6: BA 00 00                              MOV DX,PORTA
+[ 164]    00A9: EE                                    OUT DX,AL
+[ 165]    00AA: B9 FF 00                              MOV CX,00FFH
+[ 166]        :                                       
+[ 167]    00AD:                                       R4:
+[ 168]    00AD: E4 02                                 IN AL,PORTB
+[ 169]        :                                       
+[ 170]    00AF: 3C FE                                 CMP AL,000FEH
+[ 171]    00B1: 75 06                                 JNE C2R4
+[ 172]    00B3: B0 71                                 MOV AL,0071H; DISPLAYING F
+[ 173]    00B5: E6 04                                 OUT PORTC,AL
+[ 174]    00B7: EB 1C                                 JMP ONR4
+[ 175]        :                                       
+[ 176]    00B9:                                       C2R4:
+[ 177]    00B9: 3C FD                                 CMP AL,000FDH
+[ 178]    00BB: 75 06                                 JNE C3R4
+[ 179]    00BD: B0 79                                 MOV AL,0079H; DISPLAYING E
+[ 180]    00BF: E6 04                                 OUT PORTC,AL
+[ 181]    00C1: EB 12                                 JMP ONR4
+[ 182]        :                                       
+[ 183]    00C3:                                       C3R4:
+[ 184]    00C3: 3C FB                                 CMP AL,000FBH
+[ 185]    00C5: 75 06                                 JNE C4R4
+[ 186]    00C7: B0 5E                                 MOV AL,005EH; DISPLAYING d
+[ 187]    00C9: E6 04                                 OUT PORTC,AL
+[ 188]    00CB: EB 08                                 JMP ONR4
+[ 189]        :                                       
+[ 190]    00CD:                                       C4R4:
+[ 191]    00CD: 3C F7                                 CMP AL,000F7H
+[ 192]    00CF: 75 04                                 JNE ONR4
+[ 193]    00D1: B0 39                                 MOV AL,0039H; DISPLAYING C
+[ 194]    00D3: E6 04                                 OUT PORTC,AL
+[ 195]        :                                       
+[ 196]    00D5:                                       ONR4:
+[ 197]    00D5: E2 D6                                 LOOP R4
+[ 198]        :                                       
+[ 199]    00D7: E9 31 FF                              JMP START
+[ 200]        :                                       
+[ 201]        :                                       CODE ENDS
+[ 202]        :                                       END
+[ 203]        :                                       HLT           ; halt!
+[ 204]        :                                       
+[ 205]        :                                       
+[ 206]        :                                       
+[ 207]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================

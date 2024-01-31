@@ -1,0 +1,22 @@
+< THE SYMBOL TABLE >  fsafsaf.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+DELAY0                   	00011     	-1        	LABEL     	CODE      
+DELAY10                  	0001C     	-1        	LABEL     	CODE      
+DELAY11                  	00027     	-1        	LABEL     	CODE      
+DELAY12                  	00032     	-1        	LABEL     	CODE      
+DELAY13                  	0003D     	-1        	LABEL     	CODE      
+DELAY14                  	00048     	-1        	LABEL     	CODE      
+DELAY15                  	00053     	-1        	LABEL     	CODE      
+DELAY16                  	0005E     	-1        	LABEL     	CODE      
+DELAY17                  	00069     	-1        	LABEL     	CODE      
+DELAY18                  	00074     	-1        	LABEL     	CODE      
+DELAY19                  	0007F     	-1        	LABEL     	CODE      
+===================================================================================================
+[ 22-Sep-21  --  10:03:34 PM ] 
+< END >
+ 

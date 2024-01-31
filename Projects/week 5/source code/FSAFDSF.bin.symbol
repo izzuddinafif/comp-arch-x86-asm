@@ -1,0 +1,32 @@
+< THE SYMBOL TABLE >  FSAFDSF.bin  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+DATA                     	00000     	-5        	SEGMENT   	(ITSELF)  
+CODE                     	00000     	-5        	SEGMENT   	(ITSELF)  
+START                    	00000     	-1        	LABEL     	CODE      
+XS                       	00002     	-1        	NEAR      	CODE      
+DELAY0                   	00011     	-1        	LABEL     	CODE      
+DELAY1                   	0001C     	-1        	LABEL     	CODE      
+DELAY2                   	00027     	-1        	LABEL     	CODE      
+DELAY3                   	00032     	-1        	LABEL     	CODE      
+DELAY4                   	0003D     	-1        	LABEL     	CODE      
+DELAY5                   	00048     	-1        	LABEL     	CODE      
+DELAY6                   	00053     	-1        	LABEL     	CODE      
+DELAY7                   	0005E     	-1        	LABEL     	CODE      
+DELAY8                   	00069     	-1        	LABEL     	CODE      
+DELAY9                   	00074     	-1        	LABEL     	CODE      
+P0                       	00077     	-1        	LABEL     	CODE      
+P1                       	0007D     	-1        	NEAR      	CODE      
+P2                       	00084     	-1        	NEAR      	CODE      
+P3                       	0008B     	-1        	NEAR      	CODE      
+P4                       	00092     	-1        	NEAR      	CODE      
+P5                       	00099     	-1        	NEAR      	CODE      
+P6                       	000A0     	-1        	NEAR      	CODE      
+P7                       	000A7     	-1        	NEAR      	CODE      
+P8                       	000AE     	-1        	NEAR      	CODE      
+P9                       	000B5     	-1        	NEAR      	CODE      
+===================================================================================================
+[ 22-Sep-21  --  11:19:34 PM ] 
+< END >
+ 
